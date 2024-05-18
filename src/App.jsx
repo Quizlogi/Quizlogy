@@ -1,13 +1,9 @@
-import { Button } from '@material-tailwind/react';
-import React from 'react';
+import Homepage from "./pages/Homepage"
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1 className='text-violet-600'>Hello world!</h1>
-      <Button>Button</Button>
+    <div className='bg-[#ECEFF1]'>
+      <Homepage />
     </div>
   )
 }
-
-export default App
