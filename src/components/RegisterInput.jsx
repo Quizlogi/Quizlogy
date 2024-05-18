@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import {
     Card,
     Input,
@@ -8,46 +7,46 @@ import {
    
   export function RegisterInput() {
     return (
-        <Card color="transparent" shadow={true} className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16">
+        <Card color="white" shadow={true} className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16">
       <Typography variant="h4" color="blue-gray" className="mb-8 text-center">
         Welcome to Quizlogy
       </Typography>
       <form className="space-y-6">
         <div>
-          <Typography variant="h6" color="blue-gray">
+          <Typography color="blue-gray" className="mb-2">
             Email
           </Typography>
           <Input
             size="lg"
             placeholder="name@mail.com"
-            className="border-t-blue-gray-200 focus:border-t-gray-900"
+            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
           />
         </div>
         <div>
-          <Typography variant="h6" color="blue-gray">
+          <Typography color="blue-gray" className="mb-2">
             Username
           </Typography>
           <Input
             size="lg"
-            placeholder="username"
-            className="border-t-blue-gray-200 focus:border-t-gray-900"
+            placeholder="budisetiawan123"
+            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
           />
         </div>
         <div>
-          <Typography variant="h6" color="blue-gray">
+          <Typography color="blue-gray" className="mb-2">
             Password
           </Typography>
           <Input
             type="password"
             size="lg"
             placeholder="********"
-            className="border-t-blue-gray-200 focus:border-t-gray-900"
+            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
