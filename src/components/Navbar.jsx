@@ -6,6 +6,7 @@ import {
     IconButton,
     Collapse,
 } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
 
 export function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -90,18 +91,21 @@ export function NavbarDefault() {
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
-            href="#"
+            href="/"
             className="mr-4 cursor-pointer py-1.5 font-medium">
               Quizlogy
           </Typography>
           <div className="hidden lg:block">{navList}</div>
           <div className="flex items-center gap-x-1">
+          <Link to="/login">
             <Button
               variant="text"
               size="sm"
               className="hidden lg:inline-block">
                 <span>Log In</span>
             </Button>
+            </Link>
+            < Link to="/register">
             <Button
               color="blue"
               variant="filled"
@@ -109,6 +113,7 @@ export function NavbarDefault() {
               className="hidden lg:inline-block">
                 <span>Sign Up</span>
             </Button>
+            </Link>
           </div>
           <IconButton
             variant="text"
@@ -149,16 +154,20 @@ export function NavbarDefault() {
           <div className="container mx-auto">
             {navList}
             <div className="flex items-center gap-x-1">
+            <Link to="/login">
               <Button fullWidth variant="text" size="sm" className="">
                 <span>Log In</span>
               </Button>
+              </Link>
+              <Link to="/register">
               <Button
                 fullWidth
                 variant="gradient"
                 size="sm"
                 className="">
-                <span>Sign in</span>
+                <span>Sign Up</span>
               </Button>
+              </Link>
             </div>
           </div>
         </Collapse>
