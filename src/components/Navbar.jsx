@@ -89,12 +89,7 @@ export function NavbarDefault() {
     return (
       <Navbar className="mx-auto max-w-full px-4 py-2 lg:px-8 lg:py-4">
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-          <Typography
-            as="a"
-            href="/"
-            className="mr-4 cursor-pointer py-1.5 font-medium">
-              Quizlogy
-          </Typography>
+          <img src="logo-quizlogy.svg" alt="Quizlogy" width="50" />
           <div className="hidden lg:block">{navList}</div>
           <div className="flex items-center gap-x-1">
           <Link to="/login">
