@@ -4,9 +4,9 @@ export function LogoFooter() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full bg-white p-8">
-      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
+      <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
         <img src="https://docs.material-tailwind.com/img/logo-ct-dark.png" alt="logo-ct" className="w-10" />
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+        <ul className="flex flex-col md:flex-row flex-wrap items-center gap-y-2 gap-x-8">
           <li>
             <Typography
               as="a"
