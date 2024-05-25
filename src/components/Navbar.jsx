@@ -160,9 +160,6 @@ export function NavbarDefault() {
               </Button>
               </Link>
               <Link to="/register">
-              <Button fullWidth variant="text" size="sm" className="">
-                <span>Log In</span>
-              </Button>
               <Button
                 fullWidth
                 variant="gradient"
