@@ -5,7 +5,7 @@ import Edit from '../components/Edit';
 
 export default function DashboardPenguji() {
   return (
-    <div className='bg-gray-100 flex flex-col md:flex-row'>
+    <div className='bg-gray-100 flex flex-col md:flex-row h-dvh'>
         <Sidebar />
         <div className='flex-grow p-4'>
             <Card />
