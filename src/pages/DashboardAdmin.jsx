@@ -5,7 +5,7 @@ import EditAdmin from '../components/admin/EditAdmin';
 
 export default function DashboardAdmin() {
   return (
-    <div className='bg-gray-100 flex flex-col md:flex-row'>
+    <div className='bg-gray-100 flex flex-col md:flex-row h-dvh'>
       <SidebarAdmin />
       <div className='flex-grow p-4'>
         <Card />

@@ -6,9 +6,9 @@ import {RegisterInput} from '../components/RegisterInput';
 
 const RegisterPage = () => {
     return (
-        <div className='bg-[#ECEFF1]'>
-            <NavbarRegister />
-            <div className='flex justify-center items-center h-screen'>
+        <div className='bg-[#ECEFF1] h-screen overflow-hidden'>
+            <NavbarRegister className='fixed postition'/>
+            <div className='flex justify-center items-center h-full'>
                 <RegisterInput />
             </div>
         </div>

@@ -9,7 +9,7 @@ export default function DashboardUser() {
   return (
     <>
       <NavbarAuth />
-      <div className='mx-auto my-12 max-w-[1006px] bg-[#ECEFF1]'>
+      <div className='mx-auto my-12 max-w-[1006px] bg-[#ECEFF1] h-dvh'>
         <div>
           <OriginalCard />
         </div>
