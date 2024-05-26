@@ -2,7 +2,7 @@ import { Typography } from '@material-tailwind/react';
 
 export default function EditAdmin() {
   return (
-    <div className='mx-auto my-12 max-w-[1006px] overflow-hidden md:overflow-visible'>
+    <div className='mx-auto my-12 max-w-[1006px] h-dvh overflow-hidden md:overflow-visible'>
       <Typography className='ml-4 mb-6' variant='h4'>
         Edit Quiz
       </Typography>
