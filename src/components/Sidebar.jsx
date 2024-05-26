@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     Card,
     List,
@@ -9,7 +10,8 @@ import {
     PowerIcon,
   } from '@heroicons/react/24/solid';
   import { LuFileQuestion } from "react-icons/lu";
-  
+  import { Link } from "react-router-dom";
+
   export function Sidebar() {
     return (
       <Card className='md:w-[20rem] lg:w-[16rem] p-4 shadow-xl shadow-blue-gray-900/5'>
@@ -23,12 +25,14 @@ import {
             </ListItemPrefix>
             Dashboard
           </ListItem>
+          <Link to="/quizpage">
           <ListItem>
             <ListItemPrefix>
               <LuFileQuestion  className='h-5 w-5' />
             </ListItemPrefix>
             Quiz
           </ListItem>
+          </Link>
           <ListItem>
             <ListItemPrefix>
               <PowerIcon className='h-5 w-5' />
