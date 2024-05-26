@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
  
 export function SimpleCard({ title }) {
   return (
-    <Card className="mt-6 w-96 h-48 shadow-lg group hover:bg-blue-400 transition-all">
+    <Card className="mt-6 w-full sm:w-64 md:w-80 lg:w-96 h-auto shadow-lg group hover:bg-blue-400 transition-all">
       <CardBody>
         <Typography variant="h5" color="blue-gray" className="group-hover:text-blue-50 mb-2">
           {title}
