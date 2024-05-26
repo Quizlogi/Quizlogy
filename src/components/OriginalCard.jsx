@@ -8,7 +8,7 @@ import {
  
 export function OriginalCard() {
   return (
-    <Card className="mt-6 w-96">
+    <Card className="mt-6">
       <CardBody className="flex flex-row items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
