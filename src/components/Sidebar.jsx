@@ -8,6 +8,7 @@ import {
     PresentationChartBarIcon,
     PowerIcon,
   } from '@heroicons/react/24/solid';
+  import { LuFileQuestion } from "react-icons/lu";
   
   export function Sidebar() {
     return (
@@ -21,6 +22,12 @@ import {
               <PresentationChartBarIcon className='h-5 w-5' />
             </ListItemPrefix>
             Dashboard
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <LuFileQuestion  className='h-5 w-5' />
+            </ListItemPrefix>
+            Quiz
           </ListItem>
           <ListItem>
             <ListItemPrefix>

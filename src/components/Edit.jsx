@@ -22,6 +22,11 @@ export default function Edit() {
               </th>
               <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>
                 <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
+                  Number of Questions
+                </p>
+              </th>
+              <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>
+                <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
                   Created At
                 </p>
               </th>
@@ -42,16 +47,26 @@ export default function Edit() {
                   Biologi
                 </p>
               </td>
+              <td className='p-4 border-b border-blue-gray-50 '>
+                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                  10
+                </p>
+              </td>
               <td className='p-4 border-b border-blue-gray-50'>
                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
                   23/04/18
                 </p>
               </td>
-              <td className='p-4 border-b border-blue-gray-50'>
+              <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
                 <a
                   href='#'
                   className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
                   Edit
+                </a>
+                <a
+                  href='#'
+                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                  Delete
                 </a>
               </td>
             </tr>
@@ -66,16 +81,26 @@ export default function Edit() {
                   Biologi
                 </p>
               </td>
+              <td className='p-4 border-b border-blue-gray-50 '>
+                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                  10
+                </p>
+              </td>
               <td className='p-4 border-b border-blue-gray-50'>
                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
                   23/04/18
                 </p>
               </td>
-              <td className='p-4 border-b border-blue-gray-50'>
+              <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
                 <a
                   href='#'
                   className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
                   Edit
+                </a>
+                <a
+                  href='#'
+                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                  Delete
                 </a>
               </td>
             </tr>
@@ -90,16 +115,26 @@ export default function Edit() {
                   Biologi
                 </p>
               </td>
+              <td className='p-4 border-b border-blue-gray-50 '>
+                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                  10
+                </p>
+              </td>
               <td className='p-4 border-b border-blue-gray-50'>
                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
                   19/09/17
                 </p>
               </td>
-              <td className='p-4 border-b border-blue-gray-50'>
+              <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
                 <a
                   href='#'
                   className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
                   Edit
+                </a>
+                <a
+                  href='#'
+                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                  Delete
                 </a>
               </td>
             </tr>
@@ -114,16 +149,26 @@ export default function Edit() {
                   Developer
                 </p>
               </td>
+              <td className='p-4 border-b border-blue-gray-50 '>
+                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                  10
+                </p>
+              </td>
               <td className='p-4 border-b border-blue-gray-50'>
                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
                   24/12/08
                 </p>
               </td>
-              <td className='p-4 border-b border-blue-gray-50'>
+              <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
                 <a
                   href='#'
                   className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
                   Edit
+                </a>
+                <a
+                  href='#'
+                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                  Delete
                 </a>
               </td>
             </tr>
@@ -138,16 +183,26 @@ export default function Edit() {
                   Manager
                 </p>
               </td>
+              <td className='p-4 border-b border-blue-gray-50 '>
+                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                  10
+                </p>
+              </td>
               <td className='p-4'>
                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
                   04/10/21
                 </p>
               </td>
-              <td className='p-4'>
+              <td className='p-4 flex justify-between'>
                 <a
                   href='#'
                   className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
                   Edit
+                </a>
+                <a
+                  href='#'
+                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                  Delete
                 </a>
               </td>
             </tr>
