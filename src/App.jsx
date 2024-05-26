@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import DashboardPenguji from "./pages/DashboardPenguji";
 import DashboardUser from './pages/DashboardUser';
 import QuizPage from "./pages/QuizPage";
+import DashboardAdmin from "./pages/DashboardAdmin";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/dashboardpenguji" element={<DashboardPenguji />} />
           <Route path="/dashboard" element={<DashboardUser />} />
           <Route path="/quizpage" element={<QuizPage />} />
+          <Route path="/dashboardadmin" element={<DashboardAdmin />} />
         </Routes>
       </div>
     </Router>

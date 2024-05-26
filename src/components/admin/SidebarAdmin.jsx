@@ -7,12 +7,20 @@ import {
   Drawer,
   IconButton,
 } from '@material-tailwind/react';
-import { PresentationChartBarIcon, PowerIcon } from '@heroicons/react/24/solid';
-import { LuFileQuestion } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import {
+  PresentationChartBarIcon,
+  PowerIcon,
+} from '@heroicons/react/24/solid';
+import { LuFileQuestion } from "react-icons/lu";
+import { FaRegUser, FaUserCog  } from "react-icons/fa";
+import { BiCategory } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import {
+  Bars3Icon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
 
-export function Sidebar() {
+export function SidebarAdmin() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const openDrawer = () => setIsDrawerOpen(true);
@@ -20,12 +28,8 @@ export function Sidebar() {
 
   const SidebarContent = () => (
     <>
-      <div className='mb-2 p-4 '>
-        <img
-          src='/quizlogy-logo-horizontal.png'
-          alt='Logo'
-          className='h-10 mr-2 object-contain'
-        />
+      <div className='mb-2 p-4'>
+        <img src="/quizlogy-logo-horizontal.png" alt="Logo" className='h-10 mr-2 object-contain' />
       </div>
       <List>
         <ListItem>
@@ -34,13 +38,37 @@ export function Sidebar() {
           </ListItemPrefix>
           Dashboard
         </ListItem>
-        <Link to='/quizpage'>
+        <Link to="/quizpage">
           <ListItem>
             <ListItemPrefix>
               <LuFileQuestion className='h-5 w-5' />
             </ListItemPrefix>
             Quiz
           </ListItem>
+        </Link>
+        <Link to="#">
+          <ListItem>
+            <ListItemPrefix>
+              <FaRegUser className='h-5 w-5' />
+            </ListItemPrefix>
+            User
+          </ListItem>
+          <Link to="#">
+          <ListItem>
+            <ListItemPrefix>
+              <FaUserCog  className='h-5 w-5' />
+            </ListItemPrefix>
+            Role
+          </ListItem>
+          <Link to="#">
+          <ListItem>
+            <ListItemPrefix>
+              <BiCategory className='h-5 w-5' />
+            </ListItemPrefix>
+            Kategori
+          </ListItem>
+        </Link>
+        </Link>
         </Link>
         <ListItem>
           <ListItemPrefix>
@@ -59,22 +87,15 @@ export function Sidebar() {
 
   return (
     <>
-      <IconButton
-        variant='text'
-        size='lg'
-        onClick={openDrawer}
-        className='md:hidden'>
+      <IconButton variant="text" size="lg" onClick={openDrawer} className="md:hidden">
         {isDrawerOpen ? (
-          <XMarkIcon className='h-8 w-8 stroke-2' />
+          <XMarkIcon className="h-8 w-8 stroke-2" />
         ) : (
-          <Bars3Icon className='h-8 w-8 stroke-2' />
+          <Bars3Icon className="h-8 w-8 stroke-2" />
         )}
       </IconButton>
-      <Drawer open={isDrawerOpen} onClose={closeDrawer} className='md:hidden'>
-        <Card
-          color='transparent'
-          shadow={false}
-          className='h-[calc(100vh-2rem)] w-full p-4'>
+      <Drawer open={isDrawerOpen} onClose={closeDrawer} className="md:hidden">
+        <Card color="transparent" shadow={false} className="h-[calc(100vh-2rem)] w-full p-4">
           <SidebarContent />
         </Card>
       </Drawer>
