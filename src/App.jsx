@@ -6,6 +6,7 @@ import DashboardPenguji from "./pages/penguji/DashboardPenguji";
 import DashboardUser from './pages/DashboardUser';
 import QuizPage from "./pages/QuizPage";
 import DashboardAdmin from "./pages/admin/DashboardAdmin";
+import Role from "./pages/admin/Role";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/dashboard" element={<DashboardUser />} />
           <Route path="/quizpage" element={<QuizPage />} />
           <Route path="/admin/dashboardadmin" element={<DashboardAdmin />} />
+          <Route path="/admin/dashboardadmin/role" element={<Role />} />
         </Routes>
       </div>
     </Router>
