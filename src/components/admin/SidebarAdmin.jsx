@@ -11,7 +11,6 @@ import {
   PresentationChartBarIcon,
   PowerIcon,
 } from '@heroicons/react/24/solid';
-import { LuFileQuestion } from "react-icons/lu";
 import { FaRegUser, FaUserCog  } from "react-icons/fa";
 import { BiCategory } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -38,14 +37,6 @@ export function SidebarAdmin() {
           </ListItemPrefix>
           Dashboard
         </ListItem>
-        <Link to="/quizpage">
-          <ListItem>
-            <ListItemPrefix>
-              <LuFileQuestion className='h-5 w-5' />
-            </ListItemPrefix>
-            Quiz
-          </ListItem>
-        </Link>
         <Link to="#">
           <ListItem>
             <ListItemPrefix>
