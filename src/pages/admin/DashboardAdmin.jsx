@@ -1,7 +1,7 @@
 import React from 'react';
-import { SidebarAdmin } from '../components/admin/SidebarAdmin';
-import Card from '../components/Card';
-import EditAdmin from '../components/admin/EditAdmin';
+import { SidebarAdmin } from '../../components/admin/SidebarAdmin';
+import Card from '../../components/Card';
+import EditAdmin from '../../components/admin/EditAdmin';
 
 export default function DashboardAdmin() {
   return (
