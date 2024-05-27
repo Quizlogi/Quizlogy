@@ -7,10 +7,10 @@ import AuthLayout from '../layouts/AuthLayout';
 import Homepage from '../pages/Homepage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
-import DashboardPenguji from '../pages/DashboardPenguji';
+import DashboardPenguji from '../pages/penguji/DashboardPenguji';
 import DashboardUser from '../pages/DashboardUser';
 import QuizPage from '../pages/QuizPage';
-import DashboardAdmin from '../pages/DashboardAdmin';
+import DashboardAdmin from '../pages/admin/DashboardAdmin';
 import Error500 from '../pages/500';
 import Error404 from '../pages/404';
 

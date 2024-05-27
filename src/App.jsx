@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import DashboardPenguji from "./pages/DashboardPenguji";
+import DashboardPenguji from "./pages/penguji/DashboardPenguji";
 import DashboardUser from './pages/DashboardUser';
 import QuizPage from "./pages/QuizPage";
-import DashboardAdmin from "./pages/DashboardAdmin";
+import DashboardAdmin from "./pages/admin/DashboardAdmin";
 
 export default function App() {
   return (
@@ -15,10 +15,10 @@ export default function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/dashboardpenguji" element={<DashboardPenguji />} />
+          <Route path="/penguji/dashboardpenguji" element={<DashboardPenguji />} />
           <Route path="/dashboard" element={<DashboardUser />} />
           <Route path="/quizpage" element={<QuizPage />} />
-          <Route path="/dashboardadmin" element={<DashboardAdmin />} />
+          <Route path="/admin/dashboardadmin" element={<DashboardAdmin />} />
         </Routes>
       </div>
     </Router>
