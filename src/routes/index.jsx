@@ -11,6 +11,7 @@ import DashboardPenguji from '../pages/penguji/DashboardPenguji';
 import DashboardUser from '../pages/DashboardUser';
 import QuizPage from '../pages/QuizPage';
 import DashboardAdmin from '../pages/admin/DashboardAdmin';
+import Role from '../pages/Role'
 import Error500 from '../pages/500';
 import Error404 from '../pages/404';
 
@@ -46,6 +47,10 @@ const routes = createBrowserRouter([
       {
         path: 'dashboardadmin',
         element: <DashboardAdmin />,
+      },
+      {
+        path: 'dashboardadmin/role',
+        element: <Role />,
       },
     ],
   },

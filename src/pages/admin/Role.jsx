@@ -1,13 +1,13 @@
 import React from 'react';
 import { SidebarAdmin } from '../../components/admin/SidebarAdmin';
-import { TableAdmin } from '../../components/admin/TableAdmin';
+import { TableRole } from '../../components/admin/TableRole';
 
-export default function DashboardAdmin() {
+export default function Role() {
   return (
     <div className='bg-gray-100 flex flex-col md:flex-row h-dvh'>
       <SidebarAdmin />
       <div className='flex-grow p-4'>
-        <TableAdmin />
+        <TableRole />
       </div>
     </div>
   );

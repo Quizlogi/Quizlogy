@@ -31,12 +31,14 @@ export function SidebarAdmin() {
         <img src="/quizlogy-logo-horizontal.png" alt="Logo" className='h-10 mr-2 object-contain' />
       </div>
       <List>
+      <Link to="./">
         <ListItem>
           <ListItemPrefix>
             <PresentationChartBarIcon className='h-5 w-5' />
           </ListItemPrefix>
           Dashboard
         </ListItem>
+        </Link>
         <Link to="#">
           <ListItem>
             <ListItemPrefix>
@@ -44,7 +46,7 @@ export function SidebarAdmin() {
             </ListItemPrefix>
             User
           </ListItem>
-          <Link to="#">
+          <Link to="./role">
           <ListItem>
             <ListItemPrefix>
               <FaUserCog  className='h-5 w-5' />
