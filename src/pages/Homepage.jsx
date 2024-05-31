@@ -1,8 +1,8 @@
-import { NavbarDefault } from '../components/Navbar';
-import Hero from '../components/Hero';
-import Faq from '../components/Faq';
-import ProductUse from '../components/ProductUse';
-import { LogoFooter } from '../components/LogoFooter';
+import { NavbarDefault } from '../components/landing/Navbar';
+import Hero from '../components/landing/Hero';
+import Faq from '../components/landing/Faq';
+import ProductUse from '../components/landing/ProductUse';
+import { LogoFooter } from '../components/landing/LogoFooter';
 
 export default function Homepage() {
   return (

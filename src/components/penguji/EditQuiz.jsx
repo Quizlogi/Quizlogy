@@ -94,17 +94,17 @@ export default function Edit() {
                 </p>
               </td>
               <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
-              <div className='flex space-x-4'>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Edit
-                </a>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Delete
-                </a>
+                <div className='flex space-x-4'>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Edit
+                  </a>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Delete
+                  </a>
                 </div>
               </td>
             </tr>
@@ -130,17 +130,17 @@ export default function Edit() {
                 </p>
               </td>
               <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
-              <div className='flex space-x-4'>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Edit
-                </a>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Delete
-                </a>
+                <div className='flex space-x-4'>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Edit
+                  </a>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Delete
+                  </a>
                 </div>
               </td>
             </tr>
@@ -166,17 +166,17 @@ export default function Edit() {
                 </p>
               </td>
               <td className='p-4 border-b border-blue-gray-50 flex justify-between'>
-              <div className='flex space-x-4'>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Edit
-                </a>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Delete
-                </a>
+                <div className='flex space-x-4'>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Edit
+                  </a>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Delete
+                  </a>
                 </div>
               </td>
             </tr>
@@ -202,17 +202,17 @@ export default function Edit() {
                 </p>
               </td>
               <td className='p-4 flex justify-between'>
-              <div className='flex space-x-4'>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Edit
-                </a>
-                <a
-                  href='#'
-                  className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
-                  Delete
-                </a>
+                <div className='flex space-x-4'>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Edit
+                  </a>
+                  <a
+                    href='#'
+                    className='block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900'>
+                    Delete
+                  </a>
                 </div>
               </td>
             </tr>

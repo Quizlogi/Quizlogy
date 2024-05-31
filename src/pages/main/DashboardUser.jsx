@@ -1,14 +1,10 @@
-import React from 'react';
-import ImageCard from '../components/ImageCard';
+import ImageCard from '../../components/main/ImageCard';
 import { Typography } from '@material-tailwind/react';
-import { OriginalCard } from '../components/OriginalCard';
-import { LogoFooter } from '../components/LogoFooter';
-import { NavbarAuth } from '../components/auth/NavbarAuth';
+import { OriginalCard } from '../../components/main/OriginalCard';
 
 export default function DashboardUser() {
   return (
     <>
-      <NavbarAuth />
       <div className='mx-auto my-12 max-w-[1006px] bg-[#ECEFF1] h-dvh'>
         <div>
           <OriginalCard />
@@ -24,7 +20,6 @@ export default function DashboardUser() {
           </div>
         </div>
       </div>
-      <LogoFooter />
     </>
   );
 }
