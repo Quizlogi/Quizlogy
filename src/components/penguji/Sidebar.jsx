@@ -6,6 +6,7 @@ import {
   ListItemPrefix,
   Drawer,
   IconButton,
+  Button,
 } from '@material-tailwind/react';
 import { PresentationChartBarIcon, PowerIcon } from '@heroicons/react/24/solid';
 import { LuFileQuestion } from 'react-icons/lu';
@@ -27,7 +28,7 @@ export function SidebarPenguji() {
           className='h-10 mr-2 object-contain'
         />
       </div>
-      <List>
+      <List className='gap-2'>
         <Link to='/penguji/dashboard'>
           <ListItem>
             <ListItemPrefix>
@@ -44,13 +45,17 @@ export function SidebarPenguji() {
             Quiz
           </ListItem>
         </Link>
-
         <ListItem>
           <ListItemPrefix>
             <PowerIcon className='h-5 w-5' />
           </ListItemPrefix>
           Sign Out
         </ListItem>
+          <Link to='/penguji/create'>
+            <Button className='w-[13rem]'>
+              Create Quiz
+            </Button>
+          </Link> 
       </List>
     </>
   );
