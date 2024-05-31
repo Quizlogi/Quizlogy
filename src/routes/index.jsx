@@ -22,6 +22,7 @@ import CategoryPage from '../pages/admin/Category';
 
 import DashboardPenguji from "../pages/penguji/Dashboard";
 import QuizPage from "../pages/penguji/QuizPage";
+import CreateQuiz from "../pages/penguji/CreateQuiz";
 
 
 
@@ -86,6 +87,10 @@ const routes = createBrowserRouter([
         path: 'quiz',
         element: <QuizPage />,
       },
+      {
+        path: 'create',
+        element: <CreateQuiz />
+      }
     ],
   },
   {
