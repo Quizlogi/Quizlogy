@@ -1,18 +1,15 @@
-// src/pages/LoginPage.jsx
-import React from 'react';
-import { NavbarRegister } from '../components/auth/NavbarRegister';
-import {RegisterInput} from '../components/RegisterInput';
-
+import { NavbarAuth } from "../components/navbar/NavbarAuth";
+import { RegisterInput } from "../components/auth/RegisterInput";
 
 const RegisterPage = () => {
-    return (
-        <div className='bg-[#ECEFF1] h-screen overflow-hidden'>
-            <NavbarRegister className='fixed postition'/>
-            <div className='flex justify-center items-center h-full'>
-                <RegisterInput />
-            </div>
-        </div>
-      );
+  return (
+    <div className="bg-[#ECEFF1] h-screen overflow-hidden">
+      <NavbarAuth type="register" />
+      <div className="flex justify-center items-center h-full">
+        <RegisterInput />
+      </div>
+    </div>
+  );
 };
 
 export default RegisterPage;

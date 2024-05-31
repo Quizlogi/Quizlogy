@@ -1,74 +1,89 @@
-import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
-import AppLayout from '../layouts/AppLayout';
-import AuthLayout from '../layouts/AuthLayout';
+import { MainLayout } from "../components/layout/MainLayout";
+import { AdminLayout } from "../components/layout/AdminLayout";
+import { PengujiLayout } from "../components/layout/PengujiLayout";
+import { AuthLayout } from "../components/layout/AuthLayout";
 
-import Homepage from '../pages/Homepage';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import DashboardPenguji from '../pages/penguji/DashboardPenguji';
-import DashboardUser from '../pages/DashboardUser';
-import QuizPage from '../pages/QuizPage';
-import DashboardAdmin from '../pages/admin/DashboardAdmin';
-import Role from '../pages/Role'
+import Homepage from "../pages/Homepage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
+
 import Error500 from '../pages/500';
 import Error404 from '../pages/404';
 
+
+import DashboardUser from "../pages/main/DashboardUser";
+
+import DashboardAdmin from "../pages/admin/Dashboard";
+import UserPage from "../pages/admin/User";
+import RolePage from "../pages/admin/Role";
+import CategoryPage from '../pages/admin/Category';
+
+import DashboardPenguji from "../pages/penguji/Dashboard";
+import QuizPage from "../pages/penguji/QuizPage";
+
+
+
 const routes = createBrowserRouter([
   {
-    path: '/',
-    element: <AppLayout />,
+    path: "/",
+    element: <Homepage />,
+    errorElement: <Error500 />,
+  },
+  {
+    path: "/",
+    element: <MainLayout />,
     errorElement: <Error500 />,
     children: [
       {
-        index: true,
-        element: <Homepage />,
-      },
-      {
-        path: 'dashboard/',
+        path: "dashboard",
         element: <DashboardUser />,
-      },
-      {
-        path: 'quizpage',
-        element: <QuizPage />,
       },
     ],
   },
   {
-    path: '/admin',
-    element: <AppLayout />,
+    path: "/admin",
+    element: <AdminLayout />,
     errorElement: <Error500 />,
     children: [
       {
         index: true,
-        element: <Homepage />,
+        element: <Navigate to="/admin/dashboard" />,
       },
       {
-        path: 'dashboardadmin',
+        path: "dashboard",
         element: <DashboardAdmin />,
       },
       {
-        path: 'dashboardadmin/role',
-        element: <Role />,
+        path: "users",
+        element: <UserPage />,
       },
+      {
+        path: "roles",
+        element: <RolePage />,
+      },
+      {
+        path: "categories",
+        element: <CategoryPage />,
+      }
     ],
   },
   {
     path: '/penguji',
-    element: <AppLayout />,
+    element: <PengujiLayout />,
     errorElement: <Error500 />,
     children: [
       {
         index: true,
-        element: <Homepage />,
+        element: <Navigate to="/penguji/dashboard" />,
       },
       {
-        path: 'dashboarpenguji',
+        path: 'dashboard',
         element: <DashboardPenguji />,
       },
       {
-        path: 'quizpage',
+        path: 'quiz',
         element: <QuizPage />,
       },
     ],
@@ -87,9 +102,9 @@ const routes = createBrowserRouter([
       },
     ],
   },
-  // not found
+  // // not found
   {
-    path: '*',
+    path: "*",
     element: <Error404 />,
   },
 ]);
