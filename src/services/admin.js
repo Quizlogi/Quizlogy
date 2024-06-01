@@ -1,5 +1,6 @@
 import Axios from "./";
 import { getToken } from "../utils/tokenHandler";
+import toast from "react-hot-toast";
 
 const getUsers = async () => {
   try {
@@ -34,6 +35,7 @@ const createUser = async (data) => {
         Authorization: getToken(),
       },
     });
+    toast.success("User created successfully");
     return response.data.data;
   } catch (err) {
     return { error: err.response.data };
@@ -47,7 +49,7 @@ const updateUser = async (id, data) => {
         Authorization: getToken(),
       },
     });
-    return response.data.data;
+    return response.data.data && toast.success("User updated successfully");
   } catch (err) {
     console.log(err);
   }
