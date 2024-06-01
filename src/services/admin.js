@@ -8,7 +8,7 @@ const getUsers = async () => {
         Authorization: getToken(),
       },
     });
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log(err);
   }
@@ -21,7 +21,7 @@ const getUserById = async (id) => {
         Authorization: getToken(),
       },
     });
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log(err);
   }
@@ -34,9 +34,9 @@ const createUser = async (data) => {
         Authorization: getToken(),
       },
     });
-    return response.data;
+    return response.data.data;
   } catch (err) {
-    console.log(err);
+    return { error: err.response.data };
   }
 };
 
@@ -47,7 +47,7 @@ const updateUser = async (id, data) => {
         Authorization: getToken(),
       },
     });
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log(err);
   }
@@ -60,10 +60,10 @@ const deleteUser = async (id) => {
         Authorization: getToken(),
       },
     });
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log(err);
   }
 };
 
-export { getUsers, getUserById, createUser, updateUser, deleteUser };
+export default { getUsers, getUserById, createUser, updateUser, deleteUser };
