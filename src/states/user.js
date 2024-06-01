@@ -36,7 +36,17 @@ export const useStore = create((set) => ({
   },
   updateUser: async (id, data) => {
     set({ loading: true });
-    await UserAPI.updateUser(id, data);
-    set({ loading: false });
+    const user = await UserAPI.updateUser(id, data);
+    if (user.error) {
+      alert(user.error.message);
+
+      set({ loading: false });
+      return;
+    }
+
+    set((state) => ({
+      users: state.users.map((item) => (item.id === id ? user : item)),
+      loading: false,
+    }));
   },
 }));

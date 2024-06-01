@@ -49,7 +49,7 @@ const updateUser = async (id, data) => {
     });
     return response.data.data;
   } catch (err) {
-    console.log(err);
+    return { error: err.response.data };
   }
 };
 

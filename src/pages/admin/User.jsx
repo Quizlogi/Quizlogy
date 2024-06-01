@@ -24,12 +24,15 @@ export default function UserPage() {
   const [password, setPassword, resetPassword] = useInput("");
   const [role, setRole] = useState("");
 
-  const { users, loading, fetchUsers, createUser } = useStore((state) => ({
-    users: state.users,
-    fetchUsers: state.fetchUsers,
-    createUser: state.createUser,
-    loading: state.loading,
-  }));
+  const { users, loading, fetchUsers, createUser, updateUser } = useStore(
+    (state) => ({
+      users: state.users,
+      fetchUsers: state.fetchUsers,
+      createUser: state.createUser,
+      updateUser: state.updateUser,
+      loading: state.loading,
+    })
+  );
 
   const handleOpen = () => {
     if (open) {
@@ -41,6 +44,12 @@ export default function UserPage() {
 
   const onEdit = (row) => {
     setSelectedUser(row);
+
+    setName({ target: { value: row.name } });
+    setEmail({ target: { value: row.email } });
+    setUsername({ target: { value: row.username } });
+    setRole(row.role.id.toString());
+
     setOpen(true);
   };
 
@@ -50,7 +59,24 @@ export default function UserPage() {
 
   const handleSubmit = async () => {
     if (selectedUser) {
-      console.log("Edit", selectedUser);
+      setOpen(false);
+
+      const obj = {
+        id: selectedUser.id,
+        name,
+        email,
+        username,
+      };
+
+      if (password) {
+        obj.password = password;
+      }
+
+      if (role) {
+        obj.role_id = parseInt(role);
+      }
+
+      await updateUser(obj.id, obj);
     } else {
       setOpen(false);
 
