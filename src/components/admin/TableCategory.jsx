@@ -34,10 +34,10 @@ const columns = [
   },
 ];
 
-export default function TableRole({ data }) {
+export default function TableCategory({ data }) {
   return <Table columns={columns} data={data} />;
 }
 
-TableRole.propTypes = {
+TableCategory.propTypes = {
   data: propTypes.array.isRequired,
 };

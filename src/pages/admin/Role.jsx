@@ -1,4 +1,4 @@
-import { TableRole } from "../../components/admin/TableRole";
+import TableRole from "../../components/admin/TableRole";
 
 export default function RolePage() {
   return (
