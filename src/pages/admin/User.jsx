@@ -26,16 +26,18 @@ export default function UserPage() {
   const [password, setPassword, resetPassword] = useInput("");
   const [role, setRole] = useState("");
 
-  const { users, loading, fetchUsers, createUser, updateUser } = useStore(
-    (state) => ({
-      users: state.users,
-      fetchUsers: state.fetchUsers,
-      createUser: state.createUser,
-      updateUser: state.updateUser,
-      loading: state.loading,
-    }),
-    shallow
-  );
+  const { users, loading, fetchUsers, createUser, updateUser, removeUser } =
+    useStore(
+      (state) => ({
+        users: state.users,
+        fetchUsers: state.fetchUsers,
+        createUser: state.createUser,
+        updateUser: state.updateUser,
+        removeUser: state.removeUser,
+        loading: state.loading,
+      }),
+      shallow
+    );
 
   const handleOpen = () => {
     if (open) {
@@ -57,7 +59,7 @@ export default function UserPage() {
   };
 
   const onDelete = (row) => {
-    console.log(row);
+    removeUser(row.id);
   };
 
   const handleSubmit = async () => {

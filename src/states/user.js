@@ -1,21 +1,16 @@
 import { create } from "zustand";
 
 import UserAPI from "../services/admin";
+import toast from "react-hot-toast";
 
 export const useStore = create((set) => ({
   users: [],
-  roles: [],
   loading: false,
   error: false,
   fetchUsers: async () => {
     set({ loading: true });
     const users = await UserAPI.getUsers();
     set({ users, loading: false });
-  },
-  fetchRoles: async () => {
-    set({ loading: true });
-    const roles = await UserAPI.getRoles();
-    set({ roles, loading: false });
   },
   createUser: async (data) => {
     try {
@@ -29,9 +24,9 @@ export const useStore = create((set) => ({
       }
 
       set((state) => ({ users: [...state.users, user], loading: false }));
-      alert("User created successfully");
+      toast.success("User created successfully");
     } catch (err) {
-      alert("Failed to create user");
+      toast.error("User creation failed");
     }
   },
   updateUser: async (id, data) => {
@@ -48,5 +43,24 @@ export const useStore = create((set) => ({
       users: state.users.map((item) => (item.id === id ? user : item)),
       loading: false,
     }));
+
+    toast.success("User updated successfully");
+  },
+  removeUser: async (id) => {
+    try {
+      set({ loading: true });
+      await UserAPI.deleteUser(id);
+      set((state) => ({
+        users: state.users.filter((item) => item.id !== id),
+        loading: false,
+      }));
+
+      toast.success("User deleted successfully");
+    } catch (err) {
+      set({ loading: false });
+      toast.error("User deletion failed");
+    } finally {
+      set({ loading: false });
+    }
   },
 }));

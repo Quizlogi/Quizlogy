@@ -3,7 +3,7 @@ import { Button } from "@material-tailwind/react";
 import propTypes from "prop-types";
 import Table from "../table";
 
-export default function TableUser({ data, onEdit }) {
+export default function TableUser({ data, onEdit, onDelete }) {
   const columns = [
     {
       name: "No",
@@ -38,7 +38,11 @@ export default function TableUser({ data, onEdit }) {
             <PencilIcon strokeWidth={2} className="h-4 w-4" />
           </Button>
           <Button color="red" size="sm">
-            <TrashIcon strokeWidth={2} className="h-4 w-4" />
+            <TrashIcon
+              strokeWidth={2}
+              className="h-4 w-4"
+              onClick={() => onDelete(row)}
+            />
           </Button>
         </div>
       ),
@@ -51,4 +55,5 @@ export default function TableUser({ data, onEdit }) {
 TableUser.propTypes = {
   data: propTypes.array.isRequired,
   onEdit: propTypes.func,
+  onDelete: propTypes.func,
 };

@@ -1,6 +1,5 @@
 import Axios from "./";
 import { getToken } from "../utils/tokenHandler";
-import toast from "react-hot-toast";
 
 const getUsers = async () => {
   try {
@@ -11,7 +10,7 @@ const getUsers = async () => {
     });
     return response.data.data;
   } catch (err) {
-    console.log(err);
+    return { error: err.response.data };
   }
 };
 
@@ -24,7 +23,7 @@ const getUserById = async (id) => {
     });
     return response.data.data;
   } catch (err) {
-    console.log(err);
+    return { error: err.response.data };
   }
 };
 
@@ -35,7 +34,6 @@ const createUser = async (data) => {
         Authorization: getToken(),
       },
     });
-    toast.success("User created successfully");
     return response.data.data;
   } catch (err) {
     return { error: err.response.data };
@@ -49,7 +47,7 @@ const updateUser = async (id, data) => {
         Authorization: getToken(),
       },
     });
-    return response.data.data && toast.success("User updated successfully");
+    return response.data.data;
   } catch (err) {
     return { error: err.response.data };
   }
@@ -64,8 +62,56 @@ const deleteUser = async (id) => {
     });
     return response.data.data;
   } catch (err) {
+    return { error: err.response.data };
+  }
+};
+
+const getRoles = async () => {
+  try {
+    const response = await Axios.get("/admin/roles", {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
     console.log(err);
   }
 };
 
-export default { getUsers, getUserById, createUser, updateUser, deleteUser };
+const getRoleById = async (id) => {
+  try {
+    const response = await Axios.get(`/admin/roles/${id}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const updateRole = async (id, data) => {
+  try {
+    const response = await Axios.put(`/admin/roles/${id}`, data, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+};
+
+export default {
+  getUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+  getRoles,
+  getRoleById,
+  updateRole,
+};

@@ -5,13 +5,13 @@ import Table from "../table";
 
 const columns = [
   {
-    name: "Title",
-    selector: (row) => row.title,
+    name: "No",
+    selector: (row, index) => index + 1,
     sortable: true,
   },
   {
-    name: "Director",
-    selector: (row) => row.director,
+    name: "Name",
+    selector: (row) => row.name,
     sortable: true,
   },
   {
