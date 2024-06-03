@@ -7,10 +7,34 @@ import {
 import { useState } from "react";
 import { login } from "../../services/auth";
 import { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useStore } from "../../states/authUser/auth";
    
   export function LoginInput() {
+    const setAuth = useStore((state) => state.setAuthUser);
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const onLogin = () => {
+      const masuk = login({ email, password });
+      masuk.then((user) => {
+        setAuth(user);
+        switch (user.role) {
+        case 1:
+          navigate("/dashboard");
+          break;
+        case 2:
+          navigate("/penguji");
+          break;
+        case 3:
+          navigate("/admin");
+          break;
+        default:
+          break;
+        }
+      });
+    };
 
     return (
         <Card color="white" shadow={true} className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16">
@@ -50,7 +74,7 @@ import { Toaster } from "react-hot-toast";
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <Button className="w-full" size="lg" onClick={() => login({email, password})}>
+          <Button className="w-full" size="lg" onClick={onLogin}>
             Log In
           </Button>
           <Typography color="gray" className="text-center font-normal">
