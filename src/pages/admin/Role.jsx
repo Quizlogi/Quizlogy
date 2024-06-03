@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { BarLoader } from "react-spinners";
 import {
@@ -11,12 +11,14 @@ import {
 import TableRole from "../../components/admin/TableRole";
 import { useStore } from "../../states/role";
 import useInput from "../../hooks/useInput";
+import ModalComponent from "../../components/modal";
+import { Input } from "postcss";
 
 export default function RolePage() {
   const [selectedRole, setSelectedRole] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const [name, setInput] = useInput("");
+  const [name, setName] = useInput("");
 
   const { roles, loading, fetchRoles, updateRole } = useStore((state) => ({
     roles: state.roles,
@@ -35,9 +37,19 @@ export default function RolePage() {
 
   const onEdit = (row) => {
     setSelectedRole(row);
-    setInput({ target: { value: row.name } });
+    setName({ target: { value: row.name } });
     setOpen(true);
   };
+
+  const handleSubmit = () => {
+    updateRole(selectedRole.id, { name });
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    fetchRoles();
+  }, [fetchRoles]);
+
   return (
     <div className="flex-grow p-4">
       <Toaster />
@@ -46,7 +58,7 @@ export default function RolePage() {
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>
               <Typography variant="h5" color="blue-gray">
-                List User
+                List Roles
               </Typography>
             </div>
           </div>
@@ -57,10 +69,21 @@ export default function RolePage() {
               <BarLoader color="#0f172a" css="margin: 0 auto" />
             </div>
           ) : (
-            <TableRole data={[]} onEdit={onEdit} />
+            <TableRole data={roles} onEdit={onEdit} />
           )}
         </CardBody>
       </Card>
+
+      <ModalComponent
+        open={open}
+        handleOpen={handleOpen}
+        handleSubmit={handleSubmit}
+        title="Edit Role"
+      >
+        <div className="flex flex-col gap-4">
+          <Input label="Name" value={name} onChange={setName} />
+        </div>
+      </ModalComponent>
     </div>
   );
 }
