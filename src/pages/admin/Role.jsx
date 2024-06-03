@@ -8,11 +8,12 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-import TableRole from "../../components/admin/TableRole";
 import { useStore } from "../../states/role";
+
+import TableRole from "../../components/admin/TableRole";
 import useInput from "../../hooks/useInput";
 import ModalComponent from "../../components/modal";
-import { Input } from "postcss";
+import RoleForm from "../../components/admin/form/RoleForm";
 
 export default function RolePage() {
   const [selectedRole, setSelectedRole] = useState(null);
@@ -80,9 +81,7 @@ export default function RolePage() {
         handleSubmit={handleSubmit}
         title="Edit Role"
       >
-        <div className="flex flex-col gap-4">
-          <Input label="Name" value={name} onChange={setName} />
-        </div>
+        <RoleForm name={name} setName={setName} />
       </ModalComponent>
     </div>
   );

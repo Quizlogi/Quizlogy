@@ -37,12 +37,8 @@ export default function TableUser({ data, onEdit, onDelete }) {
           <Button color="blue" size="sm" onClick={() => onEdit(row)}>
             <PencilIcon strokeWidth={2} className="h-4 w-4" />
           </Button>
-          <Button color="red" size="sm">
-            <TrashIcon
-              strokeWidth={2}
-              className="h-4 w-4"
-              onClick={() => onDelete(row)}
-            />
+          <Button color="red" size="sm" onClick={() => onDelete(row)}>
+            <TrashIcon strokeWidth={2} className="h-4 w-4" />
           </Button>
         </div>
       ),
