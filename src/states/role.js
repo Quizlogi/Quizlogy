@@ -3,7 +3,7 @@ import { create } from "zustand";
 import RoleAPI from "../services/admin";
 import toast from "react-hot-toast";
 
-export const useRoleStore = create((set) => ({
+export const useStore = create((set) => ({
   roles: [],
   loading: false,
   error: false,

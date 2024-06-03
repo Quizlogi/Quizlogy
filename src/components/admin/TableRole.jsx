@@ -15,11 +15,6 @@ const columns = [
     sortable: true,
   },
   {
-    name: "Year",
-    selector: (row) => row.year,
-    sortable: true,
-  },
-  {
     name: "Actions",
     cell: () => (
       <div className="flex items-center gap-4">
