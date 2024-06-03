@@ -1,7 +1,20 @@
+import { useState } from "react";
 import DataTable from "react-data-table-component";
 import propTypes from "prop-types";
+import { Input } from "@material-tailwind/react";
+import { FaSearch } from "react-icons/fa";
 
 export default function Table({ columns, data }) {
+  const [filterText, setFilterText] = useState("");
+
+  const filteredData = data.filter((item) =>
+    Object.keys(item).some(
+      (key) =>
+        item[key] &&
+        item[key].toString().toLowerCase().includes(filterText.toLowerCase())
+    )
+  );
+
   const customStyles = {
     headCells: {
       style: {
@@ -27,12 +40,23 @@ export default function Table({ columns, data }) {
   };
 
   return (
-    <DataTable
-      columns={columns}
-      data={data}
-      customStyles={customStyles}
-      pagination
-    />
+    <>
+      <Input
+        className="col-span-4 float-left mb-4"
+        icon={<FaSearch />}
+        label="Search"
+        placeholder="Search..."
+        value={filterText}
+        onChange={(e) => setFilterText(e.target.value)}
+      />
+
+      <DataTable
+        columns={columns}
+        data={filteredData}
+        customStyles={customStyles}
+        pagination
+      />
+    </>
   );
 }
 
