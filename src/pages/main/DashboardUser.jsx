@@ -20,7 +20,7 @@ export default function DashboardUser() {
   }, [getDiscovery, user]);
 
   return (
-    <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 bg-[#ECEFF1] overflow-hidden">
+    <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
       <Toaster />
       <div className="mb-12">
         <OriginalCard user={user ?? {}} />
