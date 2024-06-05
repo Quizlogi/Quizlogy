@@ -1,7 +1,6 @@
 import ImageCard from '../../components/main/ImageCard';
 import { Typography } from '@material-tailwind/react';
-import { OriginalCard } from '../../components/main/OriginalCard';
-
+import { OriginalCard } from "../../components/main/OriginalCard";
 export default function DashboardUser() {
   return (
     <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 bg-[#ECEFF1] overflow-hidden">

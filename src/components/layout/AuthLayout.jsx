@@ -1,23 +1,31 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import useAuthCheck from "../../hooks/useAuthCheck";
+
+import { useEffect } from "react";
+
 export function AuthLayout() {
   const navigate = useNavigate();
 
-  const [user] = useAuthCheck();
+  const [user, loading] = useAuthCheck();
 
-  switch (user?.role) {
-    case 3:
-      navigate("/admin");
-      return;
-    case 2:
-      navigate("/penguji");
-      return;
-    case 1:
-      navigate("/dashboard");
-      return;
-    default:
-  }
+  useEffect(() => {
+    if (loading) return;
+
+    switch (user?.role) {
+      case 3:
+        navigate("/admin");
+        break;
+      case 2:
+        navigate("/penguji");
+        break;
+      case 1:
+        navigate("/dashboard");
+        break;
+      default:
+        break;
+    }
+  }, [user, navigate, loading]);
 
   return (
     <>
