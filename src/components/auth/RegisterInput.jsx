@@ -1,26 +1,25 @@
-import {
-  Card,
-  Input,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-import { register } from "../../services/auth";
+import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
-   
-  export function RegisterInput() {
-    const [name, setName] = useState(""); 
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+import propTypes from "prop-types";
 
-    return (
-      <Card color="white" shadow={true} className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16">
+export function RegisterInput({ onSubmit }) {
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  return (
+    <Card
+      color="white"
+      shadow={true}
+      className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16"
+    >
       <Toaster />
       <Typography variant="h4" color="blue-gray" className="mb-8 text-center">
         Welcome to Quizlogy
       </Typography>
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={onSubmit}>
         <div>
           <Typography color="blue-gray" className="mb-2">
             Nama
@@ -32,6 +31,7 @@ import { Toaster } from "react-hot-toast";
             labelProps={{
               className: "before:content-none after:content-none",
             }}
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -48,6 +48,7 @@ import { Toaster } from "react-hot-toast";
             labelProps={{
               className: "before:content-none after:content-none",
             }}
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -64,6 +65,7 @@ import { Toaster } from "react-hot-toast";
             labelProps={{
               className: "before:content-none after:content-none",
             }}
+            value={username}
             onChange={(e) => {
               setUsername(e.target.value);
             }}
@@ -81,12 +83,13 @@ import { Toaster } from "react-hot-toast";
             labelProps={{
               className: "before:content-none after:content-none",
             }}
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
         </div>
-        <Button className="w-full" size="lg" onClick={() => register({name, email, username, password})}>
+        <Button className="w-full" size="lg">
           Sign Up
         </Button>
         <Typography color="gray" className="text-center font-normal">
@@ -97,5 +100,9 @@ import { Toaster } from "react-hot-toast";
         </Typography>
       </form>
     </Card>
-    );
-  }
+  );
+}
+
+RegisterInput.propTypes = {
+  onSubmit: propTypes.func.isRequired,
+};
