@@ -13,8 +13,13 @@ import { BiCategory } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import { useStore } from "../../states/auth";
+
 export function SidebarAdmin() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { logout } = useStore((state) => ({
+    logout: state.logout,
+  }));
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -65,7 +70,7 @@ export function SidebarAdmin() {
           </ListItem>
         </Link>
 
-        <ListItem>
+        <ListItem onClick={logout} ripple="light">
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>
