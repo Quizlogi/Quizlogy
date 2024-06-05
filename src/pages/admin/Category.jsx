@@ -89,7 +89,8 @@ export default function CategoryPage() {
                 size="sm"
                 onClick={handleOpen}
               >
-                <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add Role
+                <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add
+                Category
               </Button>
             </div>
           </div>

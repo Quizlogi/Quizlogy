@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { useStore } from "../states/auth";
-import { useEffect } from "react";
 import { hasToken } from "../utils/tokenHandler";
+import { useEffect } from "react";
 
 export default function useAuthCheck() {
   const { user, setUser } = useStore((state) => ({
@@ -8,13 +9,15 @@ export default function useAuthCheck() {
     setUser: state.setUser,
   }));
 
-  useEffect(() => {
-    if (hasToken) {
-      setUser();
-    } else {
-      setUser(null);
-    }
-  }, [setUser]);
+  const [loading, setLoading] = useState(true);
 
-  return [user, setUser];
+  useEffect(() => {
+    if (hasToken() && !user) {
+      setUser().finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, [user, setUser]);
+
+  return [user, loading];
 }
