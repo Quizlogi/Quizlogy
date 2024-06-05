@@ -1,6 +1,7 @@
 import { Card, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
+import propType from "prop-types";
 
-export function OriginalCard() {
+export function OriginalCard({ user }) {
   return (
     <Card className="mt-6">
       <CardBody className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 mb-6">
@@ -19,7 +20,7 @@ export function OriginalCard() {
         </svg>
         <div className="text-center sm:text-left">
           <Typography variant="h5" color="blue-gray">
-            Selamat datang, User!
+            Selamat datang, {user.name}!
           </Typography>
         </div>
       </CardBody>
@@ -47,3 +48,7 @@ export function OriginalCard() {
     </Card>
   );
 }
+
+OriginalCard.propTypes = {
+  user: propType.object.isRequired,
+};
