@@ -1,7 +1,6 @@
 import { Card, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 
 export function OriginalCard() {
-  const authUser = useStore((state) => state.authUser);
   return (
     <Card className="mt-6">
       <CardBody className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 mb-6">
