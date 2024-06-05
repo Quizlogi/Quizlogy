@@ -2,8 +2,7 @@ import Axios from "./";
 import { setToken } from "../utils/tokenHandler";
 import toast from "react-hot-toast";
 
-
-export const login = async ({ email, password }) => {
+const login = async ({ email, password }) => {
   try {
     const response = await Axios.post("/login", {
       email,
@@ -11,15 +10,14 @@ export const login = async ({ email, password }) => {
     });
     const token = response.data.data.token;
     setToken(token);
-    toast.success("Login success!");
+
     return response.data.data;
   } catch (error) {
-    toast.error("Login failed!");
-    console.error("Login Error:", error); 
+    return { error: error.response.data };
   }
 };
 
-export const register = async ({ name, email, username, password }) => {
+const register = async ({ name, email, username, password }) => {
   try {
     const response = await Axios.post("/register", {
       name,
@@ -27,16 +25,13 @@ export const register = async ({ name, email, username, password }) => {
       username,
       password,
     });
-    if(response.data) {
+    if (response.data) {
       toast.success("Register success! please Login..");
     }
     console.log(response.data);
   } catch (error) {
     console.error("Register Error:", error);
   }
-}
-
-export const logout = () => {
-  setToken(null);
-  toast.success("Logout success!");
 };
+
+export default { login, register };

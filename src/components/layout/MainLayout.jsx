@@ -2,17 +2,24 @@ import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { NavbarMain } from '../navbar/NavbarMain';
 import { LogoFooter } from '../landing/LogoFooter';
 
+import { useNavigate } from "react-router-dom";
+import useAuthCheck from "../../hooks/useAuthCheck";
+
 export function MainLayout() {
-    return (
-        <>
-            <NavbarMain />
+  const navigate = useNavigate();
+  const [user] = useAuthCheck();
 
-            <main>
-                <Outlet />
-                <ScrollRestoration />
-            </main>
+  if (!user) return navigate("/login");
+  return (
+    <>
+      <NavbarMain />
 
-            <LogoFooter />
-        </>
-    );
+      <main>
+        <Outlet />
+        <ScrollRestoration />
+      </main>
+
+      <LogoFooter />
+    </>
+  );
 }
