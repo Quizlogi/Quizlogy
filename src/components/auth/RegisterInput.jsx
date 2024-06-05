@@ -1,14 +1,18 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import propTypes from "prop-types";
 
-export function RegisterInput({ onSubmit }) {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+export function RegisterInput({ 
+  name,
+  setName,
+  username,
+  setUsername,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  onSubmit,
+}) {
   return (
     <Card
       color="white"
@@ -32,9 +36,7 @@ export function RegisterInput({ onSubmit }) {
               className: "before:content-none after:content-none",
             }}
             value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+            onInput={setName}
           />
         </div>
         <div>
@@ -49,9 +51,7 @@ export function RegisterInput({ onSubmit }) {
               className: "before:content-none after:content-none",
             }}
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            onInput={setEmail}
           />
         </div>
         <div>
@@ -66,9 +66,7 @@ export function RegisterInput({ onSubmit }) {
               className: "before:content-none after:content-none",
             }}
             value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
+            onInput={setUsername}
           />
         </div>
         <div>
@@ -84,12 +82,10 @@ export function RegisterInput({ onSubmit }) {
               className: "before:content-none after:content-none",
             }}
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            onInput={setPassword}
           />
         </div>
-        <Button className="w-full" size="lg">
+        <Button className="w-full" size="lg" type="submit">
           Sign Up
         </Button>
         <Typography color="gray" className="text-center font-normal">
@@ -104,5 +100,13 @@ export function RegisterInput({ onSubmit }) {
 }
 
 RegisterInput.propTypes = {
+  name: propTypes.string.isRequired,
+  setName: propTypes.func.isRequired,
+  username: propTypes.string.isRequired,
+  setUsername: propTypes.func.isRequired,
+  email: propTypes.string.isRequired,
+  setEmail: propTypes.func.isRequired,
+  password: propTypes.string.isRequired,
+  setPassword: propTypes.func.isRequired,
   onSubmit: propTypes.func.isRequired,
 };

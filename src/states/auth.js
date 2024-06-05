@@ -30,6 +30,12 @@ export const useStore = create((set) => ({
     toast.success("Login success!");
     set({ user });
   },
+  register: async (name, email, username, password) => {
+    const user = await AuthAPI.register(name, email, username, password);
+    if (user.error) {
+      return toast.error(user.error.message);
+    }
+  },
   logout: async () => {
     set({ user: null });
     removeToken();
