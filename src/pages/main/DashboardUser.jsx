@@ -16,7 +16,6 @@ export default function DashboardUser() {
   }));
 
   useEffect(() => {
-    console.log(user);
     getDiscovery();
   }, [getDiscovery, user]);
 
