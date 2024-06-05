@@ -26,7 +26,7 @@ export default function DashboardUser() {
         <OriginalCard user={user ?? {}} />
       </div>
       <div>
-        <Typography color="black" variant="h4" className="mb-6 text-center">
+        <Typography color="black" variant="h4" className="mb-12 text-center">
           Quiz Populer
         </Typography>
         {loading ? (
@@ -34,7 +34,7 @@ export default function DashboardUser() {
             <BarLoader color="#0f172a" css="margin: 0 auto" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full flex items-center justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full items-center justify-center">
             <ImageCard data={quiz} />
           </div>
         )}
