@@ -1,12 +1,30 @@
 import { Typography, Card, Input, Button, Textarea } from "@material-tailwind/react";
 import { FaFileImage } from "react-icons/fa";
+import Select from 'react-select';
+import { useInstructureStore } from "../../states/penguji";
+import { useEffect } from "react";
 
 const inputClass = `!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent
 placeholder:text-gray-500
 placeholder:opacity-100
 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10`;
 
+
 export default function CreateQuiz() {
+  const { category, getCategory } = useInstructureStore((state) => ({
+    category: state.category,
+    getCategory: state.getCategory,
+  }));
+
+  useEffect(() => {
+    getCategory();
+  }, [getCategory])
+
+  const filteredCategory = category.map((cat) => ({
+    value: cat.id,
+    label: cat.name,
+  }));
+
   return (
     <div className='mx-auto my-12 w-[1006px]'>
       <Typography className='ml-4 mb-6' variant='h4'>
@@ -33,13 +51,7 @@ export default function CreateQuiz() {
                 className: "hidden",
               }} />
           <h6>Kategori :</h6>
-            <Input 
-              label="kategori"
-              placeholder="Biologi"
-              className={inputClass}
-              labelProps={{
-                className: "hidden",
-              }} />
+            <Select options={filteredCategory} />
           <h6>Image :</h6>
             {/* TODO: Input gambar */}
             <label htmlFor="doc" className="flex items-center p-4 gap-3 rounded-3xl border border-gray-300 border-dashed bg-gray-50 cursor-pointer">
