@@ -1,22 +1,20 @@
 import { create } from "zustand";
 
-import QuizAPI from "../services/main";
-import toast from "react-hot-toast";
+import PengujiAPI from "../services/penguji";
 
 export const useStore = create((set) => ({
   quiz: [],
   loading: false,
   getDiscovery: async () => {
+    set({ loading: true });
     try {
-      set({ loading: true });
-
-      const quiz = await QuizAPI.getDiscovery();
-      set({ quiz });
-
-      set({ loading: false });
+      const response = await PengujiAPI.getDiscovery();
+      set({ quiz: response.data });
     } catch (error) {
-      toast.error("Failed to fetch quiz");
+      console.error(error);
+    } finally {
       set({ loading: false });
     }
   },
 }));
+    

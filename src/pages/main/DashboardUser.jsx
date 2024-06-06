@@ -3,7 +3,7 @@ import { Typography } from '@material-tailwind/react';
 import { OriginalCard } from "../../components/main/OriginalCard";
 
 import { useStore as useStoreAuth } from "../../states/auth";
-import { useStore as useStoreQuiz } from "../../states/quiz";
+import { useStore as useStoreQuiz } from "../../states/quizzes";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { BarLoader } from "react-spinners";
