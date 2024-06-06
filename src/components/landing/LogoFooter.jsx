@@ -12,7 +12,7 @@ export function LogoFooter() {
               as='a'
               href='#'
               color='white'
-              className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'>
+              className='font-normal transition-colors hover:text-primary focus:text-primary'>
               About Us
             </Typography>
           </li>
@@ -21,7 +21,7 @@ export function LogoFooter() {
               as='a'
               href='#'
               color='white'
-              className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'>
+              className='font-normal transition-colors hover:text-primary focus:text-primary'>
               License
             </Typography>
           </li>
@@ -30,7 +30,7 @@ export function LogoFooter() {
               as='a'
               href='#'
               color='white'
-              className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'>
+              className='font-normal transition-colors hover:text-primary focus:text-primary'>
               Contribute
             </Typography>
           </li>
@@ -39,7 +39,7 @@ export function LogoFooter() {
               as='a'
               href='#'
               color='white'
-              className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'>
+              className='font-normal transition-colors hover:text-primary focus:text-primary'>
               Contact Us
             </Typography>
           </li>
