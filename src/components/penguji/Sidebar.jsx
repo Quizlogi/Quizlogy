@@ -12,9 +12,13 @@ import { PresentationChartBarIcon, PowerIcon } from '@heroicons/react/24/solid';
 import { LuFileQuestion } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useStore as useStoreAuth } from "../../states/auth";
 
 export function SidebarPenguji() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { logout } = useStoreAuth((state) => ({
+    logout: state.logout,
+  }));
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -45,7 +49,7 @@ export function SidebarPenguji() {
             Quiz
           </ListItem>
         </Link>
-        <ListItem>
+        <ListItem onClick={logout}>
           <ListItemPrefix>
             <PowerIcon className='h-5 w-5' />
           </ListItemPrefix>
