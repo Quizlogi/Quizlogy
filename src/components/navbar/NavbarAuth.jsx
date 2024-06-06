@@ -17,10 +17,10 @@ export function NavbarAuth({ type }) {
           {type === "login" ? (
             <Link to="/register">
               <Button
-                color="blue"
-                variant="filled"
+                // color="blue"
+                // variant="filled"
                 size="sm"
-                className="hidden lg:inline-block"
+                className="bg-secondary hidden lg:inline-block transition-all duration-300 hover:text-white hover:bg-indigo-600"
               >
                 Sign Up
               </Button>
@@ -28,10 +28,10 @@ export function NavbarAuth({ type }) {
           ) : (
             <Link to="/login">
               <Button
-                color="blue"
-                variant="filled"
+                // color="blue"
+                // variant="filled"
                 size="sm"
-                className="hidden lg:inline-block"
+                className="bg-secondary hidden lg:inline-block transition-all duration-300 hover:text-white hover:bg-indigo-600"
               >
                 Log In
               </Button>
