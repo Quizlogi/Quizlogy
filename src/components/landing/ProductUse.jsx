@@ -5,7 +5,7 @@ import { fadeIn } from '/variants';
 export default function ProductUse() {
   return (
     <div className='md:px-14 p-4 max-w-s mx-auto mb-10'>
-      <div className='flex flex-col md:flex-row justify-between items-center gap-6'>
+      <div className='flex flex-col md:flex-row justify-center items-center gap-6'>
         <motion.div
           variants={fadeIn('right', 0.2)}
           initial='hidden'
@@ -23,7 +23,7 @@ export default function ProductUse() {
           <h2 className='md:text-5xl text-3xl font-bold text-primary mb-5 leading-normal'>
             Quizlogy <span className='text-secondary'>cocok</span> untuk...
           </h2>
-          <div className='flex flex-row gap-2 flex-wrap max-w-full lg:max-w-[507px] mt-2'>
+          <div className='flex flex-row gap-2 flex-wrap max-w-full lg:max-w-[507px] mt-2 justify-center md:justify-start'>
             <Chip
               variant='ghost'
               value='Pekerjaan Rumah'
