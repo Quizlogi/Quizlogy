@@ -1,15 +1,25 @@
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useNavigate } from 'react-router-dom';
 import { SidebarPenguji } from '../penguji/Sidebar';
-import NotFound from '../../pages/404';
-import { useStore } from '../../states/authUser/auth';
+import useAuthCheck from "../../hooks/useAuthCheck";
+import { useEffect } from 'react';
 
 export function PengujiLayout() {
-    const authUser = useStore((state) => state.authUser);
-    if (authUser.role !== 2) {
-        return (
-            <NotFound />
-        );
-    }
+    const navigate = useNavigate();
+    const [user, loading] = useAuthCheck();
+
+    useEffect(() => {
+        if (loading) return;
+
+        if (user?.role === 2) {
+            navigate("/penguji");
+        } else if (user?.role === 1) {
+            navigate("/dashboard");
+        } else if (user?.role === 3) {
+            navigate("/admin");
+        } else if (!user) {
+            navigate("/login");
+        }
+    }, [user, navigate, loading]);
     return (
         <>
             <main>
