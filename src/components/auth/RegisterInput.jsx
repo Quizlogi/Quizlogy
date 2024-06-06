@@ -85,7 +85,7 @@ export function RegisterInput({
             onInput={setPassword}
           />
         </div>
-        <Button className="w-full" size="lg" type="submit">
+        <Button className="w-full bg-secondary transition-all duration-300 hover:text-white hover:bg-indigo-600" size="lg" type="submit">
           Sign Up
         </Button>
         <Typography color="gray" className="text-center font-normal">
