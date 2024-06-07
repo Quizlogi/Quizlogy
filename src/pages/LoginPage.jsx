@@ -1,9 +1,8 @@
 import { LoginInput } from '../components/auth/LoginInput';
-// import { NavbarAuth } from "../components/navbar/NavbarAuth";
 import { useStore } from '../states/auth';
 import useInput from '../hooks/useInput';
 import { Toaster } from 'react-hot-toast';
-import coverImage from '../assets/cover.jpg';
+import coverImage from '/cover.jpg';
 
 const LoginPage = () => {
   const [email, setEmail] = useInput('');
@@ -24,7 +23,6 @@ const LoginPage = () => {
     <>
       <Toaster />
       <div className='w-full h-screen flex items-start'>
-        {/* <NavbarAuth type="login" /> */}
         <div className='relative w-1/2 h-full flex flex-col'>
           <div className='absolute top-[20%] left-[10%] flex flex-col'>
             <h1 className='text-4xl text-white font-bold my-4'>
@@ -33,7 +31,7 @@ const LoginPage = () => {
             <p className='text-xl text-white font-normal'>
             Join now and inspire learners everywhere</p>
           </div>
-
+ 
           <img
             src={coverImage}
             className='w-full h-full object-cover'
