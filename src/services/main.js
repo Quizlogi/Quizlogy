@@ -28,4 +28,17 @@ const getDiscovery = async () => {
   }
 };
 
-export default { me, getDiscovery };
+const getQuiz = async (id) => {
+  try {
+    const response = await Axios.get(`quiz/${id}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+}
+
+export default { me, getDiscovery, getQuiz };
