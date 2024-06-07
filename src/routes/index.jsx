@@ -24,8 +24,6 @@ import DashboardPenguji from "../pages/penguji/Dashboard";
 import QuizPage from "../pages/penguji/QuizPage";
 import CreateQuiz from "../pages/penguji/CreateQuiz";
 
-
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -67,11 +65,11 @@ const routes = createBrowserRouter([
       {
         path: "categories",
         element: <CategoryPage />,
-      }
+      },
     ],
   },
   {
-    path: '/penguji',
+    path: "/penguji",
     element: <PengujiLayout />,
     errorElement: <Error500 />,
     children: [
@@ -80,29 +78,33 @@ const routes = createBrowserRouter([
         element: <Navigate to="/penguji/dashboard" />,
       },
       {
-        path: 'dashboard',
+        path: "dashboard",
         element: <DashboardPenguji />,
       },
       {
-        path: 'quiz',
+        path: "quiz",
         element: <QuizPage />,
       },
       {
-        path: 'create',
-        element: <CreateQuiz />
-      }
+        path: "quiz/:id",
+        element: <QuizPage />,
+      },
+      {
+        path: "create",
+        element: <CreateQuiz />,
+      },
     ],
   },
   {
-    path: '/',
+    path: "/",
     element: <AuthLayout />,
     children: [
       {
-        path: 'login',
+        path: "login",
         element: <LoginPage />,
       },
       {
-        path: 'register',
+        path: "register",
         element: <RegisterPage />,
       },
     ],
