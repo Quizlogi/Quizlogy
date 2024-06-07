@@ -1,27 +1,29 @@
 import { Typography, Card, Input, Button, Textarea } from "@material-tailwind/react";
 import { FaFileImage } from "react-icons/fa";
-import { useState } from "react";
-import { TrashIcon } from "@heroicons/react/24/solid";
+import Select from 'react-select';
+import { useInstructureStore } from "../../states/penguji";
+import { useEffect } from "react";
 
 const inputClass = `!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent
 placeholder:text-gray-500
 placeholder:opacity-100
 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10`;
 
+
 export default function CreateQuiz() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const { category, getCategory } = useInstructureStore((state) => ({
+    category: state.category,
+    getCategory: state.getCategory,
+  }));
 
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
+  useEffect(() => {
+    getCategory();
+  }, [getCategory])
 
-      reader.onload = (event) => {
-        setSelectedImage(event.target.result);
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
+  const filteredCategory = category.map((cat) => ({
+    value: cat.id,
+    label: cat.name,
+  }));
 
   return (
     <div className="mx-auto my-12 w-[1006px]">
@@ -51,14 +53,7 @@ export default function CreateQuiz() {
             }}
           />
           <h6>Kategori :</h6>
-          <Input
-            label="kategori"
-            placeholder="Biologi"
-            className={inputClass}
-            labelProps={{
-              className: "hidden",
-            }}
-          />
+            <Select options={filteredCategory} />
           <h6>Image :</h6>
           {/* TODO: Input gambar */}
           <label

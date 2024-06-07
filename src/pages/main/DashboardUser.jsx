@@ -20,13 +20,13 @@ export default function DashboardUser() {
   }, [getDiscovery, user]);
 
   return (
-    <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 bg-[#ECEFF1] overflow-hidden">
+    <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
       <Toaster />
       <div className="mb-12">
         <OriginalCard user={user ?? {}} />
       </div>
       <div>
-        <Typography color="black" variant="h4" className="mb-6 text-center">
+        <Typography color="black" variant="h4" className="mb-12 text-center">
           Quiz Populer
         </Typography>
         {loading ? (
@@ -34,7 +34,7 @@ export default function DashboardUser() {
             <BarLoader color="#0f172a" css="margin: 0 auto" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full flex items-center justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full items-center justify-center">
             <ImageCard data={quiz} />
           </div>
         )}

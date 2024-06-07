@@ -1,0 +1,18 @@
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+body {
+    font-family: 'Jost', sans-serif;
+}
+
+nav{
+    z-index: 10001 !important;
+}
+
+.gradientBg{
+    background: linear-gradient(90deg, #EE9AE5 0%, #5961F9 100%);
+}
+
+/* .btnPrimary {
+    @apply py-3 px-8 bg-secondary font-semibold text-white rounded hover: bg-primary transition-all duration-300;
+} */
+

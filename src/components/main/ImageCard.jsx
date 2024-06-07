@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function ImageCard({ data }) {
   return data.map((item, index) => (
-    <Card key={index} className="w-full mb-6">
+    <Card key={index} className="w-full h-full mb-6">
       <CardHeader color="blue-gray" className="relative h-44 mt-4">
         <Link to={`/quiz/${item.id}`}>
           <img
@@ -26,7 +26,9 @@ export default function ImageCard({ data }) {
         <Typography variant="paragraph">
           {item.question_count} pertanyaan
         </Typography>
-        <Typography>{item.description}</Typography>
+        <p className="line-clamp-3">
+          {item.description}
+        </p>
       </CardBody>
     </Card>
   ));

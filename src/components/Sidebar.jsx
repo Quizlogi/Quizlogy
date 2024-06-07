@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   List,
@@ -6,19 +6,14 @@ import {
   ListItemPrefix,
   Drawer,
   IconButton,
-  Button,
 } from '@material-tailwind/react';
 import { PresentationChartBarIcon, PowerIcon } from '@heroicons/react/24/solid';
 import { LuFileQuestion } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useStore as useStoreAuth } from "../../states/auth";
 
-export function SidebarPenguji() {
+export function Sidebar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { logout } = useStoreAuth((state) => ({
-    logout: state.logout,
-  }));
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -32,16 +27,14 @@ export function SidebarPenguji() {
           className='h-10 mr-2 object-contain'
         />
       </div>
-      <List className='gap-2'>
-        <Link to='/penguji/dashboard'>
-          <ListItem>
-            <ListItemPrefix>
-              <PresentationChartBarIcon className='h-5 w-5' />
-            </ListItemPrefix>
-            Dashboard
-          </ListItem>
-        </Link>
-        <Link to='/penguji/quiz'>
+      <List>
+        <ListItem>
+          <ListItemPrefix>
+            <PresentationChartBarIcon className='h-5 w-5' />
+          </ListItemPrefix>
+          Dashboard
+        </ListItem>
+        <Link to='/quizpage'>
           <ListItem>
             <ListItemPrefix>
               <LuFileQuestion className='h-5 w-5' />
@@ -49,17 +42,17 @@ export function SidebarPenguji() {
             Quiz
           </ListItem>
         </Link>
-        <ListItem onClick={logout}>
+        <ListItem>
           <ListItemPrefix>
             <PowerIcon className='h-5 w-5' />
           </ListItemPrefix>
           Sign Out
         </ListItem>
-          <Link to='/penguji/create'>
-            <Button className='w-[13rem]'>
-              Create Quiz
-            </Button>
-          </Link> 
+        <button
+          className='select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-3 rounded-lg bg-gray-300 text-black shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none'
+          type='button'>
+          Create a Quiz
+        </button>
       </List>
     </>
   );
