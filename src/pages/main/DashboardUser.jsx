@@ -34,7 +34,7 @@ export default function DashboardUser() {
             <BarLoader color="#0f172a" css="margin: 0 auto" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full items-center justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full pb-7 items-center justify-center">
             <ImageCard data={quiz} />
           </div>
         )}
