@@ -1,6 +1,4 @@
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import propTypes from "prop-types";
-import { Form } from "react-router-dom";
+import propTypes from 'prop-types';
 
 export function LoginInput({
   email,
@@ -10,59 +8,69 @@ export function LoginInput({
   onSubmit,
 }) {
   return (
-    <Card
-      color="white"
-      shadow={true}
-      className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16"
-    >
-      <Typography variant="h4" color="blue-gray" className="mb-8 text-center">
-        Log In to Quizlogy
-      </Typography>
-      <Form className="space-y-6" onSubmit={onSubmit}>
+    <div className='w-full flex flex-col max-w-[500px]'>
+      {' '}
+      <div className='w-full flex flex-col mb-10'>
+        <h3 className='text-3xl font-semibold mb-2'>Login</h3>
+        <p className='text-base mb-2'>
+          Welcome Back! Please enter your details
+        </p>
+      </div>
+      <form className='w-full flex flex-col mb-10' onSubmit={onSubmit}>
+        {' '}
         <div>
-          <Typography color="blue-gray" className="mb-2">
-            Email
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="name@mail.com"
-            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
+          <input
+            type='email'
+            placeholder='Email'
+            className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
             value={email}
             onInput={setEmail}
             required
           />
         </div>
         <div>
-          <Typography color="blue-gray" className="mb-2">
-            Password
-          </Typography>
-          <Input
-            type="password"
-            size="lg"
-            placeholder="********"
-            className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
+          <input
+            type='password'
+            placeholder='Password'
+            className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
             value={password}
             onInput={setPassword}
             required
           />
         </div>
-        <Button className="w-full bg-secondary transition-all duration-300 hover:text-white hover:bg-indigo-600" size="lg" type="submit">
-          Log In
-        </Button>
-        <Typography color="gray" className="text-center font-normal">
-          Don't have an account?{" "}
-          <a href="/register" className="font-medium text-gray-900">
-            Sign Up
+        {/* <div className='w-full flex items-center justify-between'>
+          <div className='w-full flex items-center'>
+            <input type='checkbox' className='w-4 h-4 mr-2' />
+            <p className='text-sm'>Remember me</p>
+          </div>
+          <p className='text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2'>
+            Forgot Password?
+          </p>
+        </div> */}
+        <div className='w-full flex flex-col my-4'>
+          <button
+            type='submit'
+            className='w-full text-white my-2 font-semibold bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
+            Log In
+          </button>{' '}
+          {/* <button
+            className='w-full text-[#060606] my-2 font-semibold bg-white border border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer '
+            type='submit'>
+            Register
+          </button> */}
+        </div>
+      </form>
+      <div className='w-full flex items-center justify-center'>
+        <p className='text-sm font-normal text-[#060606]'>
+          Don't have an account?{' '}
+          <a
+            href='/register'
+            className='font-semibold underline underline-offset-2 cursor-pointer'>
+            Sign up
           </a>
-        </Typography>
-      </Form>
-    </Card>
+        </p>
+      </div>
+    </div>
   );
 }
 
