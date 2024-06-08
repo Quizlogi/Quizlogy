@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const axios = Axios.create({
-  baseURL: "https://quiz-dev.mengkodingkan.com/api",
+  baseURL: "http://localhost:3000/api",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
