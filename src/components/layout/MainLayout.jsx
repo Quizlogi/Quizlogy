@@ -4,7 +4,6 @@ import { LogoFooter } from "../landing/LogoFooter";
 import { useNavigate } from "react-router-dom";
 import useAuthCheck from "../../hooks/useAuthCheck";
 import { useEffect } from "react";
-
 export function MainLayout() {
   const navigate = useNavigate();
   const [user, loading] = useAuthCheck();
