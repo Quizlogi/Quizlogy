@@ -14,6 +14,7 @@ import Error404 from '../pages/404';
 
 
 import DashboardUser from "../pages/main/DashboardUser";
+import DetailQuiz from "../pages/main/DetailQuiz";
 
 import DashboardAdmin from "../pages/admin/Dashboard";
 import UserPage from "../pages/admin/User";
@@ -39,6 +40,10 @@ const routes = createBrowserRouter([
         path: "dashboard",
         element: <DashboardUser />,
       },
+      {
+        path: "quiz/:id",
+        element: <DetailQuiz />
+      }
     ],
   },
   {

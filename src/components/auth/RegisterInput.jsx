@@ -1,8 +1,7 @@
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { Toaster } from "react-hot-toast";
-import propTypes from "prop-types";
+import { Toaster } from 'react-hot-toast';
+import propTypes from 'prop-types';
 
-export function RegisterInput({ 
+export function RegisterInput({
   name,
   setName,
   username,
@@ -14,88 +13,78 @@ export function RegisterInput({
   onSubmit,
 }) {
   return (
-    <Card
-      color="white"
-      shadow={true}
-      className="w-80 max-w-screen-lg sm:w-96 p-8 mx-auto mt-16"
-    >
+    <>
       <Toaster />
-      <Typography variant="h4" color="blue-gray" className="mb-8 text-center">
-        Welcome to Quizlogy
-      </Typography>
-      <form className="space-y-6" onSubmit={onSubmit}>
-        <div>
-          <Typography color="blue-gray" className="mb-2">
-            Nama
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="Your Name"
-            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-            value={name}
-            onInput={setName}
-          />
+      <div className='w-full flex flex-col max-w-[500px] mb-12 md:mb-24 p-4 md:p-0 sm:max-w-full sm:p-2'>
+        {' '}
+        <div className='w-full flex flex-col mb-6 md:mb-10 sm:mb-4'>
+          <h3 className='text-3xl font-semibold mb-2'>Register</h3>
+          <p className='text-base mb-2'>
+            Welcome Back! Please enter your details
+          </p>
         </div>
-        <div>
-          <Typography color="blue-gray" className="mb-2">
-            Email
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="name@mail.com"
-            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-            value={email}
-            onInput={setEmail}
-          />
+        <form className='w-full flex flex-col mb-6 md:mb-10' onSubmit={onSubmit}>
+          {' '}
+          <div>
+            <input
+              type='name'
+              placeholder='Name'
+              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              value={name}
+              onInput={setName}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='email'
+              placeholder='Email'
+              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              value={email}
+              onInput={setEmail}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='username'
+              placeholder='Username'
+              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              value={username}
+              onInput={setUsername}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='password'
+              placeholder='Password'
+              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              value={password}
+              onInput={setPassword}
+              required
+            />
+          </div>
+          <div className='w-full flex flex-col my-4'>
+            <button
+              type='submit'
+              className='w-full text-white my-2 font-semibold bg-secondary rounded-md p-4 text-center flex items-center justify-center hover:bg-primary transition-all duration-300 cursor-pointer'>
+              Sign up
+            </button>{' '}
+          </div>
+        </form>
+        <div className='w-full flex items-center justify-center'>
+          <p className='text-sm font-normal text-[#060606]'>
+            Already have an account?{' '}
+            <a
+              href='/login'
+              className='font-semibold underline underline-offset-2 cursor-pointer'>
+              Login
+            </a>
+          </p>
         </div>
-        <div>
-          <Typography color="blue-gray" className="mb-2">
-            Username
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="budisetiawan123"
-            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-            value={username}
-            onInput={setUsername}
-          />
-        </div>
-        <div>
-          <Typography color="blue-gray" className="mb-2">
-            Password
-          </Typography>
-          <Input
-            type="password"
-            size="lg"
-            placeholder="********"
-            className="!border !border-gray-300 bg-white text-gray-900 shadow-md shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-            value={password}
-            onInput={setPassword}
-          />
-        </div>
-        <Button className="w-full bg-secondary transition-all duration-300 hover:text-white hover:bg-indigo-600" size="lg" type="submit">
-          Sign Up
-        </Button>
-        <Typography color="gray" className="text-center font-normal">
-          Already have an account?{" "}
-          <a href="/login" className="font-medium text-gray-900">
-            Log In
-          </a>
-        </Typography>
-      </form>
-    </Card>
+      </div>
+    </>
   );
 }
 
