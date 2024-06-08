@@ -24,6 +24,7 @@ import CategoryPage from '../pages/admin/Category';
 import DashboardPenguji from "../pages/penguji/Dashboard";
 import QuizPage from "../pages/penguji/QuizPage";
 import CreateQuiz from "../pages/penguji/CreateQuiz";
+import DetailQuizInst from "../pages/penguji/DetailQuiz";
 
 const routes = createBrowserRouter([
   {
@@ -42,8 +43,8 @@ const routes = createBrowserRouter([
       },
       {
         path: "quiz/:id",
-        element: <DetailQuiz />
-      }
+        element: <DetailQuiz />,
+      },
     ],
   },
   {
@@ -92,7 +93,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "quiz/:id",
-        element: <QuizPage />,
+        element: <DetailQuizInst />,
       },
       {
         path: "create",

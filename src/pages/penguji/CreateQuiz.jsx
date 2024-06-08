@@ -1,11 +1,20 @@
-import { Typography, Card, Input, Button, Textarea } from "@material-tailwind/react";
-import { FaFileImage } from "react-icons/fa";
-import Select from 'react-select';
-import { useInstructureStore } from "../../states/penguji";
 import { useEffect, useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
+
+import {
+  Typography,
+  Card,
+  Input,
+  Button,
+  Textarea,
+} from "@material-tailwind/react";
+import Select from "react-select";
+import { FaFileImage } from "react-icons/fa";
 import { TrashIcon } from "@heroicons/react/16/solid";
-import { Form } from "react-router-dom";
+
+import { useStore } from "../../states/quiz";
 import useInput from "../../hooks/useInput";
+import toast from "react-hot-toast";
 
 const inputClass = `!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent
 placeholder:text-gray-500
@@ -13,13 +22,16 @@ placeholder:opacity-100
 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10`;
 
 export default function CreateQuiz() {
+  const navigate = useNavigate();
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [title, setTitle] = useInput("");
   const [description, setDescription] = useInput("");
-  const [categor, setCategory] = useState("");
+  const [categor, setCategory] = useState({});
 
-  const { category, getCategory } = useInstructureStore((state) => ({
+  const { category, createQuiz, getCategory } = useStore((state) => ({
     category: state.category,
+    createQuiz: state.createQuiz,
     getCategory: state.getCategory,
   }));
 
@@ -43,15 +55,23 @@ export default function CreateQuiz() {
     }
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    console.log({
-      title,
-      description,
-      category: categor,
-      image: selectedImage,
-    });
+      const data = {
+        title,
+        description,
+        category: categor.value,
+        image: selectedImage,
+      };
+
+      const d = await createQuiz(data);
+
+      navigate(`/penguji/quiz/${d.id}`);
+    } catch (error) {
+      toast.error("Failed to create quiz");
+    }
   };
 
   return (
