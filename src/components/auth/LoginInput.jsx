@@ -8,16 +8,14 @@ export function LoginInput({
   onSubmit,
 }) {
   return (
-    <div className='w-full flex flex-col max-w-[500px] mb-24'>
-      {' '}
-      <div className='w-full flex flex-col mb-10'>
+    <div className='w-full flex flex-col max-w-[500px] mb-12 md:mb-24 p-4 md:p-0 sm:max-w-full sm:p-2'>
+      <div className='w-full flex flex-col mb-6 md:mb-10 sm:mb-4'>
         <h3 className='text-3xl font-semibold mb-2'>Login</h3>
         <p className='text-base mb-2'>
           Welcome Back! Please enter your details
         </p>
       </div>
-      <form className='w-full flex flex-col mb-10' onSubmit={onSubmit}>
-        {' '}
+      <form className='w-full flex flex-col mb-6 md:mb-10' onSubmit={onSubmit}>
         <div>
           <input
             type='email'
@@ -44,7 +42,7 @@ export function LoginInput({
             type='submit'
             className='w-full text-white my-2 font-semibold bg-secondary rounded-md p-4 text-center flex items-center justify-center hover:bg-primary transition-all duration-300 cursor-pointer'>
             Log In
-          </button>{' '}
+          </button>
         </div>
       </form>
       <div className='w-full flex items-center justify-center'>

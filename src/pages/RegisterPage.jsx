@@ -1,4 +1,3 @@
-// import { NavbarAuth } from "../components/navbar/NavbarAuth";
 import { RegisterInput } from "../components/auth/RegisterInput";
 import { useStore } from "../states/auth";
 import useInput from "../hooks/useInput";
@@ -27,7 +26,6 @@ const RegisterPage = () => {
 
   return (
     <div className='w-full h-screen flex items-start'>
-        {/* <NavbarAuth type="login" /> */}
         <div className='relative w-1/2 h-full flex flex-col'>
           <div className='absolute top-[20%] left-[10%] flex flex-col'>
             <h1 className='text-4xl text-white font-bold my-4'>
