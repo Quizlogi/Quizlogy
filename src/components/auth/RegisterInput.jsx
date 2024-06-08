@@ -15,15 +15,15 @@ export function RegisterInput({
   return (
     <>
       <Toaster />
-      <div className='w-full flex flex-col max-w-[500px]'>
+      <div className='w-full flex flex-col max-w-[500px] mb-12 md:mb-24 p-4 md:p-0 sm:max-w-full sm:p-2'>
         {' '}
-        <div className='w-full flex flex-col mb-10'>
+        <div className='w-full flex flex-col mb-6 md:mb-10 sm:mb-4'>
           <h3 className='text-3xl font-semibold mb-2'>Register</h3>
           <p className='text-base mb-2'>
             Welcome Back! Please enter your details
           </p>
         </div>
-        <form className='w-full flex flex-col mb-10' onSubmit={onSubmit}>
+        <form className='w-full flex flex-col mb-6 md:mb-10' onSubmit={onSubmit}>
           {' '}
           <div>
             <input
