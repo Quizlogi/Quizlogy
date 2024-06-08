@@ -3,7 +3,6 @@ import { NavbarAuth } from "../components/navbar/NavbarAuth";
 
 import { useStore } from "../states/auth";
 import useInput from "../hooks/useInput";
-import { Toaster } from "react-hot-toast";
 
 const LoginPage = () => {
   const [email, setEmail] = useInput("");
@@ -22,7 +21,6 @@ const LoginPage = () => {
 
   return (
     <>
-      <Toaster />
       <div className="bg-[#ECEFF1] h-screen overflow-hidden flex items-center justify-center">
         <NavbarAuth type="login" />
         <LoginInput
