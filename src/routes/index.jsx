@@ -9,6 +9,8 @@ import Homepage from "../pages/Homepage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 
+import AboutPage from "../pages/AboutPage";
+
 import Error500 from '../pages/500';
 import Error404 from '../pages/404';
 
@@ -112,6 +114,10 @@ const routes = createBrowserRouter([
       {
         path: "register",
         element: <RegisterPage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
       },
     ],
   },
