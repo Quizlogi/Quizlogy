@@ -26,7 +26,7 @@ export default function Faq() {
           viewport={{ once: false, amount: 0.7 }}
           className='w-full lg:w-3/4'>
           <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-start md:gap-12 gap-8 px-4 lg:px-0'>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[2px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <BiCategory
                   size={50}
@@ -37,7 +37,7 @@ export default function Faq() {
                 </h5>
               </div>
             </div>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[2px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer md:mt-16'>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer md:mt-16'>
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <GrScorecard
                   size={50}
@@ -48,7 +48,7 @@ export default function Faq() {
                 </h5>
               </div>
             </div>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[2px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <BsClipboard2Check
                   size={50}

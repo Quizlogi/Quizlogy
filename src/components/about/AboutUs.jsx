@@ -26,20 +26,20 @@ export default function AboutUs() {
           viewport={{ once: false, amount: 0.7 }}
           className='w-full lg:w-3/4'>
           <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-start md:gap-12 gap-8 px-4 lg:px-0'>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[2px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px] rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <div>
                   <img
                     src={VinaImg}
                     alt='Naufal profile'
-                    className='mb-5 w-30 h-30 border-4 rounded-lg border-secondary group-hover:border-primary transition-all duration-300'
+                    className='mb-1 w-30 h-30 border-4 rounded-lg  group-hover:border-primary transition-all duration-300'
                   />
                 </div>
                 <div>
-                  <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5 group-hover:text-secondary'>
+                  <h5 className='text-lg font-semibold text-primary px-5  mt-1 group-hover:text-secondary'>
                     M. Naufal Faqih
                   </h5>
-                  <p className='text-primary text-md text-center px-5 mt-4 group-hover:text-secondary'>
+                  <p className='text-primary text-md  px-5 mt-1 group-hover:text-secondary'>
                     Back-End
                   </p>
                 </div>
@@ -59,21 +59,21 @@ export default function AboutUs() {
                 </div>
               </div>
             </div>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[2px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer md:mt-16'>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px]  rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer md:mt-16'>
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <div>
                   <img
                     src={VinaImg}
                     alt='Vina profile'
-                    className='mb-5 w-30 h-30 border-4 rounded-lg border-secondary group-hover:border-primary transition-all duration-300'
+                    className='mb-2 w-30 h-30 border-4 rounded-lg  group-hover:border-primary transition-all duration-300'
                   />
                 </div>
 
                 <div>
-                  <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5 group-hover:text-secondary'>
-                    Vina Nur fauziah
+                  <h5 className='text-lg font-semibold text-primary px-5  mt-1 group-hover:text-secondary'>
+                    Vina Nur Fauziah
                   </h5>
-                  <p className='text-primary text-md text-center px-5 mt-4 group-hover:text-secondary'>
+                  <p className='text-primary text-md  px-5 mt-1 group-hover:text-secondary'>
                     Front-End
                   </p>
                 </div>
@@ -93,25 +93,25 @@ export default function AboutUs() {
                 </div>
               </div>
             </div>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[2px] border-secondary rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px]  rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <div>
                   <img
                     src={VinaImg}
                     alt='Zalfa profile'
-                    className='mb-5 w-30 h-30 border-4 rounded-lg border-secondary group-hover:border-primary transition-all duration-300'
+                    className='mb-1 w-30 h-30 border-4 rounded-lg group-hover:border-primary transition-all duration-300'
                   />
                 </div>
                 <div>
-                  <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5 group-hover:text-secondary'>
+                  <h5 className='text-lg font-semibold text-primary px-5  mt-1 group-hover:text-secondary'>
                     Zalfa Mufrih Rifda
                   </h5>
-                  <p className='text-primary text-md text-center px-5 mt-4 group-hover:text-secondary'>
+                  <p className='text-primary text-md  px-5 mt-1 group-hover:text-secondary'>
                     Front-End
                   </p>
                 </div>
                 <div className='flex space-x-2 px-5 mt-4'>
-                <Link to='https://www.linkedin.com'>
+                  <Link to='https://www.linkedin.com'>
                     <FaLinkedin
                       size={30}
                       className=' group-hover:text-secondary'
