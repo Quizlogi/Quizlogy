@@ -10,13 +10,13 @@ export function LogoFooter() {
           <li>
             <Typography
               as='a'
-              href='#'
+              href='/about'
               color='white'
               className='font-normal transition-colors hover:text-primary focus:text-primary'>
-              About Us
+              About
             </Typography>
           </li>
-          <li>
+          {/* <li>
             <Typography
               as='a'
               href='#'
@@ -33,7 +33,7 @@ export function LogoFooter() {
               className='font-normal transition-colors hover:text-primary focus:text-primary'>
               Contribute
             </Typography>
-          </li>
+          </li> */}
           <li>
             <Typography
               as='a'
