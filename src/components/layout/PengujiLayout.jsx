@@ -24,7 +24,7 @@ export function PengujiLayout() {
   return (
     <>
       <main>
-        <div className="bg-gray-100 flex flex-col md:flex-row h-dvh">
+        <div className="bg-gray-100 flex flex-col md:flex-row h-max">
           <SidebarPenguji />
           <Outlet />
           <ScrollRestoration />

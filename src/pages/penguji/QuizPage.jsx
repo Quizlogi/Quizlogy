@@ -42,7 +42,7 @@ export default function QuizPage() {
     <>
       <Toaster />
       <div className="flex-grow p-4">
-        <Card className="h-full w-full">
+        <Card className="w-full">
           <CardHeader floated={false} shadow={false} className="rounded-none">
             <div className="mb-8 flex items-center justify-between gap-8">
               <div>
