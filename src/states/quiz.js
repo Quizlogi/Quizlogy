@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import PengujiAPI from "../services/penguji";
 
-export const useStore = create((set) => ({
+export const useStore = create((set, get) => ({
   quiz: {},
   questions: [],
   category: [],
@@ -52,6 +52,57 @@ export const useStore = create((set) => ({
 
     const questions = await PengujiAPI.getQuestionsByQuizId(id);
     set({ questions });
+
+    set({ loading: false });
+  },
+  createQuestion: async (quizId, question) => {
+    set({ loading: true });
+
+    const createdQuestion = await PengujiAPI.createQuestion(quizId, question);
+
+    // get the current questions state
+    const questions = get().questions;
+
+    createdQuestion.options = [];
+
+    // add the new question to the state
+    set({ questions: [...questions, createdQuestion] });
+
+    set({ loading: false });
+  },
+  updateQuestion: async (id, value) => {
+    set({ loading: true });
+
+    await PengujiAPI.updateQuestion(id, value);
+
+    // get the current questions state
+    const questions = get().questions;
+
+    // update the question
+    const updatedQuestions = questions.map((question) => {
+      if (question.id === id) {
+        return { ...question, question: value };
+      }
+
+      return question;
+    });
+
+    set({ questions: updatedQuestions });
+
+    set({ loading: false });
+  },
+  deleteQuestion: async (id) => {
+    set({ loading: true });
+
+    await PengujiAPI.deleteQuestion(id);
+
+    // get the current questions state
+    const questions = get().questions;
+
+    // remove the question
+    const updatedQuestions = questions.filter((question) => question.id !== id);
+
+    set({ questions: updatedQuestions });
 
     set({ loading: false });
   },
