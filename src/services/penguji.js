@@ -70,10 +70,66 @@ const getQuestionsByQuizId = async (id) => {
   }
 };
 
+const createQuestion = async (id, value) => {
+  try {
+    const response = await Axios.post(
+      `instructure/quiz/${id}/question`,
+      { question: value },
+      {
+        headers: {
+          Authorization: getToken(),
+        },
+      }
+    );
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
+const updateQuestion = async (id, value) => {
+  const url = location.href;
+  const quizId = url.split("/").pop();
+
+  try {
+    const response = await Axios.put(
+      `instructure/quiz/${quizId}/question/${id}`,
+      { question: value },
+      {
+        headers: {
+          Authorization: getToken(),
+        },
+      }
+    );
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
+const deleteQuestion = async (id) => {
+  try {
+    const response = await Axios.delete(`instructure/question/${id}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
 export default {
   getQuiz,
   createQuiz,
   getCategories,
   getQuestionsByQuizId,
   getQuizById,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion,
 };

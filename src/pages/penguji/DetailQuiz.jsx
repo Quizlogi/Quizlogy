@@ -1,35 +1,50 @@
 import { ArrowLeftIcon, PlusCircleIcon } from "@heroicons/react/16/solid";
-import {
-  Card,
-  Typography,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-  Button,
-  ListItem,
-  ListItemPrefix,
-  Radio,
-  List,
-} from "@material-tailwind/react";
+import { Card, Typography, Button } from "@material-tailwind/react";
 
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../../states/quiz";
 import { BarLoader } from "react-spinners";
+import QuestionList from "../../components/penguji/QuestionList";
+import toast, { Toaster } from "react-hot-toast";
 
-export default function DetailQuiz() {
+export default function DetailQuizPenguji() {
   const { id } = useParams();
 
-  const { questions, getQuizById, loading } = useStore((state) => ({
+  const {
+    questions,
+    getQuizById,
+    createQuestion,
+    updateQuestion,
+    deleteQuestion,
+    loading,
+  } = useStore((state) => ({
     questions: state.questions,
     getQuizById: state.getQuizById,
     loading: state.loading,
+    createQuestion: state.createQuestion,
+    updateQuestion: state.updateQuestion,
+    deleteQuestion: state.deleteQuestion,
   }));
 
-  const [open, setOpen] = useState(1);
+  const questionCreate = () => {
+    createQuestion(id, "(untitled)");
 
-  const handleOpen = (value) => setOpen(open === value ? 0 : value);
+    toast.success("Question created");
+  };
+
+  const questionUpdate = (id, value) => {
+    updateQuestion(id, value);
+
+    toast.success("Question updated");
+  };
+
+  const questionDelete = (id) => {
+    deleteQuestion(id);
+
+    toast.success("Question deleted");
+  };
 
   useEffect(() => {
     getQuizById(id);
@@ -37,6 +52,7 @@ export default function DetailQuiz() {
 
   return (
     <div className="mx-auto my-12 w-[1006px] mb-5">
+      <Toaster />
       <Typography className="ml-4 mb-6" variant="h4">
         Detail Quiz
       </Typography>
@@ -59,57 +75,17 @@ export default function DetailQuiz() {
             width: "100%",
           }}
         >
-          <Button variant="contained" color="primary" className="mt-1 mb-2">
+          <Button color="blue" className="mt-1 mb-2" onClick={questionCreate}>
             <PlusCircleIcon className="h-5" />
           </Button>
-
           {questions.map((question, i) => (
-            <Accordion
+            <QuestionList
               key={i}
-              open={open === i + 1}
-              className="mb-2 rounded-lg border border-blue-gray-100 px-4"
-            >
-              <AccordionHeader
-                onClick={() => handleOpen(i + 1)}
-                className={`flex justify-between border-b-0 transition-colors ${
-                  open === i + 1 ? "text-blue-500 hover:!text-blue-700" : ""
-                }`}
-              >
-                {question.question}
-              </AccordionHeader>
-              <AccordionBody className="pt-0 text-base font-normal">
-                <List>
-                  {question.options.map((answer) => (
-                    <>
-                      <ListItem className="p-0">
-                        <label
-                          htmlFor="vertical-list-react"
-                          className="flex w-full cursor-pointer items-center px-3 py-2"
-                        >
-                          <ListItemPrefix className="mr-3">
-                            <Radio
-                              name="vertical-list"
-                              id="vertical-list-react"
-                              ripple={false}
-                              className="hover:before:opacity-0"
-                              containerProps={{
-                                className: "p-0",
-                              }}
-                            />
-                          </ListItemPrefix>
-                          <Typography
-                            color="blue-gray"
-                            className="font-medium text-blue-gray-400"
-                          >
-                            {answer.option}
-                          </Typography>
-                        </label>
-                      </ListItem>
-                    </>
-                  ))}
-                </List>
-              </AccordionBody>
-            </Accordion>
+              question={question}
+              i={i}
+              questionUpdate={questionUpdate}
+              questionDelete={questionDelete}
+            />
           ))}
         </Card>
       )}
