@@ -24,8 +24,8 @@ export function SidebarPenguji() {
   const closeDrawer = () => setIsDrawerOpen(false);
 
   const SidebarContent = () => (
-    <>
-      <div className='mb-2 p-4 '>
+    <div className='h-screen'>
+      <div className='mb-2 p-4'>
         <img
           src='/quizlogy-logo-horizontal.png'
           alt='Logo'
@@ -61,7 +61,7 @@ export function SidebarPenguji() {
             </Button>
           </Link> 
       </List>
-    </>
+    </div>
   );
 
   return (
