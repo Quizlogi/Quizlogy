@@ -7,21 +7,17 @@ import { useEffect } from "react";
 
 export function AdminLayout() {
   const navigate = useNavigate();
-  const [user, loading] = useAuthCheck();
+  const [user] = useAuthCheck();
 
   useEffect(() => {
-    if (loading) return;
-
-    if (user?.role === 3) {
-      navigate("/admin");
-    } else if (user?.role === 2) {
+    if (user?.role === 2) {
       navigate("/penguji");
     } else if (user?.role === 1) {
       navigate("/dashboard");
     } else if (!user) {
       navigate("/login");
     }
-  }, [user, navigate, loading]);
+  }, [user, navigate]);
 
   return (
     <>

@@ -10,20 +10,20 @@ import {
   Button,
   Input,
   List,
-  ListItem,
-  ListItemPrefix,
-  Radio,
-  Typography,
 } from "@material-tailwind/react";
 import propTypes from "prop-types";
 import { useState } from "react";
-import { FiEdit, FiSave, FiTrash, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiSave, FiTrash2 } from "react-icons/fi";
+import OptionList from "./OptionList";
 
 export default function QuestionList({
   question,
   i,
   questionUpdate,
   questionDelete,
+  optionCreate,
+  optionUpdate,
+  optionDelete,
 }) {
   const [open, setOpen] = useState();
   const [editing, setEditing] = useState({});
@@ -110,42 +110,22 @@ export default function QuestionList({
         >
           <List>
             {question.options.map((answer) => (
-              <ListItem className="p-0" key={answer.id}>
-                <label
-                  htmlFor="vertical-list-react"
-                  className="flex w-full cursor-pointer items-center px-3 py-2"
-                >
-                  <ListItemPrefix className="mr-3">
-                    <Radio
-                      name="vertical-list"
-                      id="vertical-list-react"
-                      ripple={false}
-                      className="hover:before:opacity-0"
-                      containerProps={{
-                        className: "p-0",
-                      }}
-                    />
-                  </ListItemPrefix>
-                  <Typography
-                    color="blue-gray"
-                    className="font-medium text-blue-gray-400"
-                  >
-                    {answer.option}
-                  </Typography>
-                  <div className="ml-auto">
-                    {/* add this div */}
-                    <FiEdit className="h-7 mr-2 cursor-pointer" />
-                    {/* add the FiEdit component */}
-                    <FiTrash className="h-7 cursor-pointer" />
-                    {/* add the FiTrash component */}
-                  </div>
-                </label>
-              </ListItem>
+              <OptionList
+                key={answer.id}
+                question={question}
+                answer={answer}
+                optionUpdate={optionUpdate}
+                optionDelete={optionDelete}
+              />
             ))}
           </List>
 
           <div className="pt-0 text-base font-normal flex justify-center items-center">
-            <Button color="blue" className="mt-1 mb-2">
+            <Button
+              color="blue"
+              className="mt-1 mb-2"
+              onClick={() => optionCreate(question.id)}
+            >
               <PlusCircleIcon className="h-5" />
             </Button>
           </div>
@@ -160,4 +140,7 @@ QuestionList.propTypes = {
   i: propTypes.number.isRequired,
   questionUpdate: propTypes.func.isRequired,
   questionDelete: propTypes.func.isRequired,
+  optionCreate: propTypes.func.isRequired,
+  optionUpdate: propTypes.func.isRequired,
+  optionDelete: propTypes.func.isRequired,
 };

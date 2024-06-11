@@ -37,12 +37,32 @@ export const useStore = create((set, get) => ({
 
     return createdQuiz;
   },
+  updateQuiz: async (id, quiz) => {
+    set({ loading: true });
+
+    const data = new FormData();
+
+    const q = {
+      title: quiz.title,
+      description: quiz.description,
+      category_id: quiz.category,
+    };
+
+    data.append("quiz", JSON.stringify(q));
+    data.append("image", quiz.image);
+
+    const updatedQuiz = await PengujiAPI.updateQuiz(id, data);
+
+    set({ quiz: updatedQuiz });
+
+    set({ loading: false });
+  },
   getQuizById: async (id) => {
     set({ loading: true });
 
     const quiz = await PengujiAPI.getQuizById(id);
 
-    set({ quiz, questions: quiz.questions });
+    set({ quiz: quiz, questions: quiz.questions });
 
     set({ loading: false });
   },
@@ -101,6 +121,71 @@ export const useStore = create((set, get) => ({
 
     // remove the question
     const updatedQuestions = questions.filter((question) => question.id !== id);
+
+    set({ questions: updatedQuestions });
+
+    set({ loading: false });
+  },
+  createOption: async (questionId, option) => {
+    set({ loading: true });
+
+    const createdOption = await PengujiAPI.createOption(questionId, option);
+
+    // get the current questions state
+    const questions = get().questions;
+
+    // update the question
+    const updatedQuestions = questions.map((question) => {
+      if (question.id === questionId) {
+        return { ...question, options: [...question.options, createdOption] };
+      }
+
+      return question;
+    });
+
+    set({ questions: updatedQuestions });
+
+    set({ loading: false });
+  },
+  updateOption: async (id, value) => {
+    set({ loading: true });
+
+    await PengujiAPI.updateOption(id, value);
+
+    // get the current questions state
+    const questions = get().questions;
+
+    // update the question
+    const updatedQuestions = questions.map((question) => {
+      const options = question.options.map((option) => {
+        if (option.id === id) {
+          return { ...option, ...value };
+        }
+
+        return { ...option, is_correct: false };
+      });
+
+      return { ...question, options };
+    });
+
+    set({ questions: updatedQuestions });
+
+    set({ loading: false });
+  },
+  deleteOption: async (id) => {
+    set({ loading: true });
+
+    await PengujiAPI.deleteOption(id);
+
+    // get the current questions state
+    const questions = get().questions;
+
+    // update the question
+    const updatedQuestions = questions.map((question) => {
+      const options = question.options.filter((option) => option.id !== id);
+
+      return { ...question, options };
+    });
 
     set({ questions: updatedQuestions });
 

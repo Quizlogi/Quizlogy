@@ -19,6 +19,9 @@ export default function DetailQuizPenguji() {
     updateQuestion,
     deleteQuestion,
     loading,
+    createOption,
+    updateOption,
+    deleteOption,
   } = useStore((state) => ({
     questions: state.questions,
     getQuizById: state.getQuizById,
@@ -26,6 +29,9 @@ export default function DetailQuizPenguji() {
     createQuestion: state.createQuestion,
     updateQuestion: state.updateQuestion,
     deleteQuestion: state.deleteQuestion,
+    createOption: state.createOption,
+    updateOption: state.updateOption,
+    deleteOption: state.deleteOption,
   }));
 
   const questionCreate = () => {
@@ -44,6 +50,24 @@ export default function DetailQuizPenguji() {
     deleteQuestion(id);
 
     toast.success("Question deleted");
+  };
+
+  const optionCreate = (questionId) => {
+    createOption(questionId, "(untitled)");
+
+    toast.success("Option created");
+  };
+
+  const optionUpdate = (id, value) => {
+    updateOption(id, value);
+
+    toast.success("Option updated");
+  };
+
+  const optionDelete = (id) => {
+    deleteOption(id);
+
+    toast.success("Option deleted");
   };
 
   useEffect(() => {
@@ -85,6 +109,9 @@ export default function DetailQuizPenguji() {
               i={i}
               questionUpdate={questionUpdate}
               questionDelete={questionDelete}
+              optionCreate={optionCreate}
+              optionUpdate={optionUpdate}
+              optionDelete={optionDelete}
             />
           ))}
         </Card>

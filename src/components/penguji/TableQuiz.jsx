@@ -1,4 +1,4 @@
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { DocumentIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Button } from "@material-tailwind/react";
 import propTypes from "prop-types";
 
@@ -31,13 +31,19 @@ export default function TableQuiz({ data, onDelete }) {
       name: "Actions",
       cell: (row) => (
         <div className="flex items-center gap-4">
+          <Link to={`/penguji/quiz/${row.id}/questions`}>
+            <Button color="green" size="sm">
+              <DocumentIcon strokeWidth={2} className="h-4 w-4" />
+            </Button>
+          </Link>
+
           <Link to={`/penguji/quiz/${row.id}`}>
             <Button color="blue" size="sm">
               <PencilIcon strokeWidth={2} className="h-4 w-4" />
             </Button>
           </Link>
 
-          <Button color="red" size="sm" onClick={onDelete}>
+          <Button color="red" size="sm" onClick={() => onDelete(row)}>
             <TrashIcon strokeWidth={2} className="h-4 w-4" />
           </Button>
         </div>
@@ -50,6 +56,5 @@ export default function TableQuiz({ data, onDelete }) {
 
 TableQuiz.propTypes = {
   data: propTypes.array.isRequired,
-  onEdit: propTypes.func,
   onDelete: propTypes.func,
 };

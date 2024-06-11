@@ -16,9 +16,10 @@ import { UserPlusIcon } from "@heroicons/react/24/solid";
 export default function QuizPage() {
   const [open, setOpen] = useState(false);
 
-  const { quiz, loading, getQuiz } = useStore((state) => ({
+  const { quiz, loading, getQuiz, deleteQuiz } = useStore((state) => ({
     quiz: state.quiz,
     getQuiz: state.getQuiz,
+    deleteQuiz: state.deleteQuiz,
     loading: state.loading,
   }));
 
@@ -30,12 +31,8 @@ export default function QuizPage() {
     setOpen(!open);
   };
 
-  const onEdit = (row) => {
-    console.log(row);
-  };
-
   const onDelete = (row) => {
-    console.log(row);
+    deleteQuiz(row.id);
   };
 
   return (
@@ -67,7 +64,7 @@ export default function QuizPage() {
                 <BarLoader color="#0f172a" css="margin: 0 auto" />
               </div>
             ) : (
-              <TableQuiz data={quiz} onEdit={onEdit} onDelete={onDelete} />
+              <TableQuiz data={quiz} onDelete={onDelete} />
             )}
           </CardBody>
         </Card>
