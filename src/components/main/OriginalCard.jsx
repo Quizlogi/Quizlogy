@@ -1,5 +1,6 @@
 import { Card, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 import propType from "prop-types";
+import { FaHistory } from "react-icons/fa";
 
 export function OriginalCard({ user }) {
   return (
@@ -24,7 +25,13 @@ export function OriginalCard({ user }) {
           </Typography>
         </div>
       </CardBody>
-      <CardFooter className="pt-0 mb-8">
+      <CardFooter className="flex flex-row pt-0 mb-8">
+        <a href="#" className="inline-block">
+          <Button size="sm" variant="text" className="flex items-center gap-2">
+            <FaHistory />
+            Riwayat quiz
+          </Button>
+        </a>
         <a href="#" className="inline-block">
           <Button size="sm" variant="text" className="flex items-center gap-2">
             Menuju ke profil

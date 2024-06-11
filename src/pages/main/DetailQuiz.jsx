@@ -45,12 +45,14 @@ export default function DetailQuiz() {
                   alt="card-image"
                   className="object-cover"
                 />
-                <Button color="green" className="w-full rounded-s-none rounded-r-none">
-                  <span className="flex flex-row gap-2 items-center">
-                    <FaPlay />
-                    Mulai Quiz
-                  </span>
-                </Button>
+                <Link to={`/quiz/${id}/start`}>
+                  <Button color="green" className="w-full rounded-s-none rounded-r-none">
+                    <span className="flex flex-row gap-2 items-center">
+                      <FaPlay />
+                      Mulai Quiz
+                    </span>
+                  </Button>
+                </Link>
               </CardHeader>
               <div className="flex flex-col gap-2">
                 {/* masih placeholder */}
@@ -61,7 +63,7 @@ export default function DetailQuiz() {
                 </h5>
                 <Typography>
                   {/* masih placeholder */}
-                  Soal 10/10
+                  10 Soal
                   {/* ================= */}
                 </Typography>
                 <p className="line-clamp-6">
