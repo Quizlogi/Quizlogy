@@ -49,13 +49,17 @@ export const useStore = create((set, get) => ({
     };
 
     data.append("quiz", JSON.stringify(q));
-    data.append("image", quiz.image);
 
-    const updatedQuiz = await PengujiAPI.updateQuiz(id, data);
+    // check image url or base64
+    if (quiz.image.startsWith("base64")) data.append("image", quiz.image);
 
-    set({ quiz: updatedQuiz });
+    console.log(data.get("quiz"), data.get("image"));
 
-    set({ loading: false });
+    // const updatedQuiz = await PengujiAPI.updateQuiz(id, data);
+
+    // set({ quiz: updatedQuiz });
+
+    // set({ loading: false });
   },
   getQuizById: async (id) => {
     set({ loading: true });
