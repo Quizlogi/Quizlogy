@@ -65,4 +65,5 @@ export const useStore = create((set) => ({
 
     toast.success("Category deleted successfully");
   },
+  reset: () => set({ categories: [], loading: false, error: false }),
 }));

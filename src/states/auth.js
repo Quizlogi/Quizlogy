@@ -5,6 +5,13 @@ import AuthAPI from "../services/auth";
 import toast from "react-hot-toast";
 import { removeToken } from "../utils/tokenHandler";
 
+import { useStore as useStoreCategory } from "./category";
+import { useStore as useStoreMain } from "./main";
+import { useStore as useStoreQuiz } from "./quiz";
+import { useStore as useStoreQuizzes } from "./quizzes";
+import { useStore as useStoreRole } from "./role";
+import { useStore as useStoreUser } from "./user";
+
 export const useStore = create((set) => ({
   user: null,
   setUser: async () => {
@@ -38,7 +45,16 @@ export const useStore = create((set) => ({
   },
   logout: async () => {
     set({ user: null });
+
+    useStoreCategory.getState().reset();
+    useStoreMain.getState().reset();
+    useStoreQuiz.getState().reset();
+    useStoreQuizzes.getState().reset();
+    useStoreRole.getState().reset();
+    useStoreUser.getState().reset();
+
     removeToken();
     toast.success("Logout success!");
   },
+  reset: () => set({ user: null }),
 }));

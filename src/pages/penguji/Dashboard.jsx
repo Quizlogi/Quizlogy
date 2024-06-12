@@ -12,8 +12,8 @@ export default function DashboardPenguji() {
   }));
 
   useEffect(() => {
-    if (!quiz.length) getQuiz();
-  }, [getQuiz, quiz]);
+    getQuiz();
+  }, [getQuiz]);
 
   const data = [{ title: "Total Quiz", number: quiz.length }];
 

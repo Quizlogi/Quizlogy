@@ -63,4 +63,5 @@ export const useStore = create((set) => ({
       set({ loading: false });
     }
   },
+  reset: () => set({ users: [] }),
 }));

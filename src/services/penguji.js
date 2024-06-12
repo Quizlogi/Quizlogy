@@ -44,6 +44,20 @@ const createQuiz = async (data) => {
   }
 };
 
+const deleteQuiz = async (id) => {
+  try {
+    const response = await Axios.delete(`instructure/quiz/${id}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
 const getCategories = async () => {
   try {
     const response = await Axios.get("/instructure/category", {
@@ -123,13 +137,67 @@ const deleteQuestion = async (id) => {
   }
 };
 
+const createOption = async (questionId, option) => {
+  try {
+    const response = await Axios.post(
+      `instructure/question/${questionId}/option`,
+      { option },
+      {
+        headers: {
+          Authorization: getToken(),
+        },
+      }
+    );
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
+const updateOption = async (id, value) => {
+  try {
+    const response = await Axios.put(
+      `instructure/question/${value.question_id}/option/${id}`,
+      { ...value },
+      {
+        headers: {
+          Authorization: getToken(),
+        },
+      }
+    );
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
+const deleteOption = async (id) => {
+  try {
+    const response = await Axios.delete(`instructure/option/${id}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
 export default {
   getQuiz,
   createQuiz,
+  deleteQuiz,
   getCategories,
   getQuestionsByQuizId,
   getQuizById,
   createQuestion,
   updateQuestion,
   deleteQuestion,
+  createOption,
+  updateOption,
+  deleteOption,
 };
