@@ -26,19 +26,19 @@ export default function EditQuiz() {
 
   const { id } = useParams();
 
-  const [selectedImage, setSelectedImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [categor, setCategory] = useState({});
+  const [categor, setCategory] = useState({ value: "", label: "" });
+  const [selectedImage, setSelectedImage] = useState("");
 
-  const { quiz, category, getCategory, getQuizById, loading } = useStore(
-    (state) => ({
+  const { quiz, category, updateQuiz, getCategory, getQuizById, loading } =
+    useStore((state) => ({
       quiz: state.quiz,
       category: state.category,
       getCategory: state.getCategory,
       getQuizById: state.getQuizById,
-    })
-  );
+      updateQuiz: state.updateQuiz,
+    }));
 
   const filteredCategory = category.map((cat) => ({
     value: cat.id,
@@ -57,8 +57,14 @@ export default function EditQuiz() {
       value: quiz?.category?.id,
       label: quiz?.category?.name,
     });
+
+    if (quiz?.image)
+      quiz?.image.startsWith("http")
+        ? setSelectedImage(quiz?.image)
+        : setSelectedImage(`${import.meta.env.VITE_CDN_URL}/${quiz?.image}`);
   }, [quiz]);
 
+  console.log(import.meta.env);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -73,6 +79,13 @@ export default function EditQuiz() {
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
+
+      updateQuiz(id, {
+        title,
+        description,
+        category: categor.value,
+        image: selectedImage,
+      });
     } catch (error) {
       toast.error("Failed to create quiz");
     }
@@ -171,7 +184,7 @@ export default function EditQuiz() {
                 className="w-full"
                 type="submit"
               >
-                Create
+                Update
               </Button>
             </div>
           </Card>

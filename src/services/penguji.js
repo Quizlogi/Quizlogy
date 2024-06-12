@@ -44,6 +44,21 @@ const createQuiz = async (data) => {
   }
 };
 
+const updateQuiz = async (id, data) => {
+  try {
+    const response = await Axios.put(`instructure/quiz/${id}`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
 const deleteQuiz = async (id) => {
   try {
     const response = await Axios.delete(`instructure/quiz/${id}`, {
@@ -190,6 +205,7 @@ const deleteOption = async (id) => {
 export default {
   getQuiz,
   createQuiz,
+  updateQuiz,
   deleteQuiz,
   getCategories,
   getQuestionsByQuizId,

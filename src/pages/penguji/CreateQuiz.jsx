@@ -68,7 +68,7 @@ export default function CreateQuiz() {
 
       const d = await createQuiz(data);
 
-      navigate(`/penguji/quiz/${d.id}`);
+      navigate(`/penguji/quiz/${d.id}/questions`);
     } catch (error) {
       toast.error("Failed to create quiz");
     }
