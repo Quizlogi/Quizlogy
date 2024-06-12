@@ -1,7 +1,8 @@
 import { Button, Card, CardHeader, Chip, Typography } from "@material-tailwind/react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useStore as useStoreQuiz } from "../../states/main";
 import { useStore as useStoreAuth } from "../../states/auth";
+import sessionAPI from "../../services/quizSession";
 import { IoArrowBack } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
 import { useEffect } from "react";
@@ -9,13 +10,33 @@ import { BarLoader } from "react-spinners";
 import PropTypes from "prop-types";
 
 export default function DetailQuiz() {
+  // global state
   const user = useStoreAuth((state) => state.user);
   const { detailQuiz, loading, getQuizDetail } = useStoreQuiz((state) => ({
     detailQuiz: state.detailQuiz,
     loading: state.loading,
     getQuizDetail: state.getDetail,
   }));
+
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const onClickStartQuiz = async () => {
+    const response = await sessionAPI.createQuizSession(id);
+    console.log(response);
+
+    // session sudah ada
+    if(response.error) {
+      const session = await sessionAPI.getQuizSession(id);
+      console.log(session);
+      navigate(`/quiz/session/${session.data[0].id}`);
+    }
+
+    // session baru
+    if(response.message === "Success") {
+      navigate(`/quiz/session/${response.data.id}`);
+    }
+  }
 
   useEffect(() => {
     getQuizDetail(id);
@@ -45,7 +66,7 @@ export default function DetailQuiz() {
                   alt="card-image"
                   className="object-cover"
                 />
-                <Button color="green" className="w-full rounded-s-none rounded-r-none">
+                <Button color="green" className="w-full rounded-s-none rounded-r-none" onClick={onClickStartQuiz}>
                   <span className="flex flex-row gap-2 items-center">
                     <FaPlay />
                     Mulai Quiz
@@ -60,8 +81,11 @@ export default function DetailQuiz() {
                   {detailQuiz.title}
                 </h5>
                 <Typography>
+                  quizId : {id}
+                </Typography>
+                <Typography>
                   {/* masih placeholder */}
-                  Soal 10/10
+                  10 Soal
                   {/* ================= */}
                 </Typography>
                 <p className="line-clamp-6">

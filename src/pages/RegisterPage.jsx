@@ -27,7 +27,7 @@ const RegisterPage = () => {
   return (
     <div className='w-full h-screen flex flex-col md:flex-row items-start'>
         <div className='relative w-full md:w-1/2 md:h-full flex flex-col'>
-          <div className='absolute top-[20%] left-[10%] flex flex-col hidden md:block'>
+          <div className='absolute top-[20%] left-[10%] flex flex-col md:block'>
             <h1 className='text-4xl text-white font-bold my-4'>
             Create engaging quizzes effortlessly
             </h1>
