@@ -191,5 +191,6 @@ export const useStore = create((set, get) => ({
 
     set({ loading: false });
   },
+  reset: () => set({ quiz: {}, questions: [], loading: false }),
 }));
     

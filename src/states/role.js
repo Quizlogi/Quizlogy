@@ -29,4 +29,5 @@ export const useStore = create((set) => ({
 
     toast.success("Role updated successfully");
   },
+  reset: () => set({ roles: [] }),
 }));
