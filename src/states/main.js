@@ -32,5 +32,6 @@ export const useStore = create((set) => ({
       toast.error("Failed to fetch quiz");
       set({ loading: false });
     }
-  }
+  },
+  reset: () => set({ quiz: [], detailQuiz: {} }),
 }));

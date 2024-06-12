@@ -50,4 +50,5 @@ export const useStore = create((set, get) => ({
       toast.error("Failed to delete quiz");
     }
   },
+  reset: () => set({ quiz: [] }),
 }));
