@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, useParams } from "react-router-dom";
+import { Form, useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import {
@@ -22,7 +22,7 @@ placeholder:opacity-100
 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10`;
 
 export default function EditQuiz() {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -64,7 +64,6 @@ export default function EditQuiz() {
         : setSelectedImage(`${import.meta.env.VITE_CDN_URL}/${quiz?.image}`);
   }, [quiz]);
 
-  console.log(import.meta.env);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -80,12 +79,21 @@ export default function EditQuiz() {
     try {
       e.preventDefault();
 
-      updateQuiz(id, {
+      const data = {
         title,
         description,
         category: categor.value,
         image: selectedImage,
-      });
+      };
+
+      updateQuiz(id, data);
+
+      // toast success
+      // after that navigate to quiz detail
+
+      toast.success("Quiz updated successfully");
+
+      navigate(`/penguji/quiz`, { replace: true });
     } catch (error) {
       toast.error("Failed to create quiz");
     }
