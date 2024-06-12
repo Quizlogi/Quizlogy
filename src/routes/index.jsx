@@ -55,7 +55,7 @@ const routes = createBrowserRouter([
         element: <CategoryPageUser />
       },
       {
-        path: "quiz/:id/start",
+        path: "quiz/session/:sessionId",
         element: <StartQuiz />
       }
     ],
