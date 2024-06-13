@@ -7,6 +7,12 @@ export const initQuizAnswer = () => {
 export const setQuizAnswer = (questionId, optionId) => {
   const existingAnswers = JSON.parse(db.getItem('questionAnswer')) || [];
   const newAnswer = { questionId: questionId, optionId: optionId };
+  if(existingAnswers.some(answer => answer.questionId === questionId)) {
+    const index = existingAnswers.findIndex(answer => answer.questionId === questionId);
+    existingAnswers[index].optionId = newAnswer.optionId;
+    db.setItem('questionAnswer', JSON.stringify(existingAnswers));
+    return;
+  }
   existingAnswers.push(newAnswer);
   db.setItem('questionAnswer', JSON.stringify(existingAnswers));
 }

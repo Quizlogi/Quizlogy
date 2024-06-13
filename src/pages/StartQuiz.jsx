@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useStore as useSessionStore } from "../states/quizSession"
+import { getQuizAnswer, initQuizAnswer, setQuizAnswer } from "../utils/userAnswer";
 import { Card, Button, ButtonGroup, Chip, Typography, IconButton } from "@material-tailwind/react";
 import { GrCaretPrevious, GrCaretNext } from "react-icons/gr";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 export default function StartQuiz() {
@@ -44,10 +45,15 @@ export default function StartQuiz() {
     if (quizIndex > 0) {
       setQuizIndex(quizIndex - 1);
     }
-    if (quizIndex === 0) {
-      toast.error("You're at the first question!");
-    }
   };
+
+  const handleAnswer = (optionId) => {
+    if(getQuizAnswer() === null) {
+      initQuizAnswer();
+    }
+    const questionId = questions.id;
+    setQuizAnswer(questionId, optionId);
+  }
 
   return (
     <Card className="w-[576px] h-[560px] mx-auto my-4">
@@ -64,7 +70,6 @@ export default function StartQuiz() {
           <hr className="my-2 border-t border-slate-300"/>
           {/* changed section */}
           <Typography variant="h5" className="text-slate-700">
-            {/* Apa kepanjangan dari APALAH */}
             {questions.question}
           </Typography>
           <section className="flex flex-row justify-between my-2 mb-8">
@@ -76,9 +81,11 @@ export default function StartQuiz() {
             {questions.options?.map((option, index) => {
               const chipValue = String.fromCharCode(65 + index);
               return (
-                <Button key={index} className="flex flex-row gap-4 items-center border rounded" onClick={() => { console.log(option.id) }}>
+                <Button key={index} className="flex flex-row gap-4 items-center border rounded" onClick={() => { handleAnswer(option.id) } }>
                   <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit" />
-                  {option.option}
+                  <span className="text-slate-700 font-bold">
+                    {option.option}
+                  </span>
                 </Button>
               )
             })}
@@ -86,12 +93,24 @@ export default function StartQuiz() {
         </div>
         <div className="lower-section">
           <section className="flex flex-row justify-between">
-            <IconButton size="lg" variant="outlined" onClick={prevQuestion}>
-              <GrCaretPrevious />
-            </IconButton>
-            <IconButton size="lg" variant="outlined" onClick={nextQuestion}>
-              <GrCaretNext />
-            </IconButton>
+            {quizIndex === 0 ? (
+              <Button size="sm" variant="text" disabled></Button>
+              ) : (
+              <IconButton size="lg" variant="outlined" onClick={prevQuestion}>
+                <GrCaretPrevious />
+              </IconButton>
+            )}
+            {
+              quizIndex === (quiz.questions?.length || 0) - 1 ? (
+                <Button size="sm" variant="outlined" disabled>
+                  Submit
+                </Button>
+              ) : (
+                <IconButton size="lg" variant="outlined" onClick={nextQuestion}>
+                  <GrCaretNext />
+                </IconButton>
+              )
+            }
           </section>
         </div>
       </article>
