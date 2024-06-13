@@ -19,6 +19,7 @@ import DashboardUser from "../pages/main/DashboardUser";
 import DetailQuiz from "../pages/main/DetailQuiz";
 import CategoryPageUser from "../pages/main/CategoryPage";
 import StartQuiz from "../pages/StartQuiz";
+import ProfileUser from "../pages/main/ProfileUser";
 
 import DashboardAdmin from "../pages/admin/Dashboard";
 import UserPage from "../pages/admin/User";
@@ -47,6 +48,10 @@ const routes = createBrowserRouter([
         element: <DashboardUser />,
       },
       {
+        path: "dashboard/profile",
+        element: <ProfileUser />
+      },
+      {
         path: "quiz/:id",
         element: <DetailQuiz />,
       },
@@ -57,7 +62,7 @@ const routes = createBrowserRouter([
       {
         path: "quiz/session/:sessionId",
         element: <StartQuiz />
-      }
+      }     
     ],
   },
   {

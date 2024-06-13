@@ -1,6 +1,7 @@
 import { Card, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 import propType from "prop-types";
 import { FaHistory } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export function OriginalCard({ user }) {
   return (
@@ -32,7 +33,7 @@ export function OriginalCard({ user }) {
             Riwayat quiz
           </Button>
         </a>
-        <a href="#" className="inline-block">
+        <Link to="/dashboard/profile" className="inline-block">
           <Button size="sm" variant="text" className="flex items-center gap-2">
             Menuju ke profil
             <svg
@@ -50,7 +51,7 @@ export function OriginalCard({ user }) {
               />
             </svg>
           </Button>
-        </a>
+        </Link>
       </CardFooter>
     </Card>
   );
