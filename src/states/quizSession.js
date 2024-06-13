@@ -15,7 +15,8 @@ export const useStore = create((set) => ({
         toast.error(quizSession.error);
         return;
       }
-      set({ quizSession });
+
+      set({ quizSession: quizSession });
 
       set({ loading: false });
       return quizSession;
