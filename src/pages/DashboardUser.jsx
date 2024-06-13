@@ -22,7 +22,7 @@ export default function DashboardUser() {
             <ImageCard />
             <ImageCard />
           </div>
-        </div>
+        </div> 
       </div>
       <LogoFooter />
     </>
