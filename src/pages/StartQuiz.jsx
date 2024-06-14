@@ -80,7 +80,7 @@ export default function StartQuiz() {
               Pertanyaan {quizIndex + 1}/{quiz.questions?.length || 0}
             </Typography>
           </section>
-          <ButtonGroup size="md" variant="filled" className="flex flex-col gap-4 p-1 divide-white">
+          <ButtonGroup size="md" variant="outlined" className="flex flex-col gap-4 p-1 divide-white">
             {questions.options?.map((option, index) => {
               const chipValue = String.fromCharCode(65 + index);
               if(userAns.includes(option.id) || selectedOption === option.id) {
@@ -94,9 +94,9 @@ export default function StartQuiz() {
                 )
               }
               return (
-                <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-slate-800" onClick={() => { handleAnswer(option.id) } }>
-                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit text-white bg-blue-gray" />
-                  <span className="text-white font-bold">
+                <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded" onClick={() => { handleAnswer(option.id) } }>
+                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit bg-blue-gray" />
+                  <span className="font-bold">
                     {option.option}
                   </span>
                 </Button>
