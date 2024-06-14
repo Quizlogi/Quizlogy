@@ -15,8 +15,6 @@ export function MainLayout() {
       navigate("/admin");
     } else if (user?.role === 2) {
       navigate("/penguji");
-    } else if (user?.role === 1) {
-      navigate("/dashboard");
     } else if (!user) {
       navigate("/login");
     }

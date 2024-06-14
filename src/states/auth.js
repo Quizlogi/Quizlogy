@@ -43,6 +43,16 @@ export const useStore = create((set) => ({
       return toast.error(user.error.message);
     }
   },
+  update: async ({ name, email, username, password }) => {
+    const user = await UserAPI.updateMe({ name, email, username, password });
+    if (user.error) {
+      return toast.error(user.error.message);
+    }
+
+    set({ user });
+
+    toast.success("Profile updated!");
+  },
   logout: async () => {
     set({ user: null });
 

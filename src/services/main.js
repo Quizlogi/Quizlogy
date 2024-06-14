@@ -15,6 +15,23 @@ const me = async () => {
   }
 };
 
+const updateMe = async ({ name, email, username, password }) => {
+  // make password is optional
+  const data = { name, email, username };
+  if (password) data.password = password;
+
+  try {
+    const response = await Axios.put("me", data, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+};
+
 const getDiscovery = async () => {
   try {
     const response = await Axios.get("quiz/discovery", {
@@ -41,4 +58,4 @@ const getQuiz = async (id) => {
   }
 }
 
-export default { me, getDiscovery, getQuiz };
+export default { me, getDiscovery, getQuiz, updateMe };
