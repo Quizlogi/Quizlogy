@@ -13,6 +13,10 @@ export const setQuizAnswer = (questionId, optionId) => {
     db.setItem('questionAnswer', JSON.stringify(existingAnswers));
     return;
   }
+
+  if(newAnswer.optionId === existingAnswers.find(answer => answer.questionId === questionId)?.optionId) {
+    return { questionId: questionId, optionId: "" };
+  }
   existingAnswers.push(newAnswer);
   db.setItem('questionAnswer', JSON.stringify(existingAnswers));
 }

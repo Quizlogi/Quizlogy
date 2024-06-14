@@ -5,16 +5,18 @@ import { Card, Button, ButtonGroup, Chip, Typography, IconButton } from "@materi
 import { GrCaretPrevious, GrCaretNext } from "react-icons/gr";
 import { Toaster } from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { shallow } from "zustand/shallow";
 
 export default function StartQuiz() {
   const { sessionId } = useParams();
   const [quizIndex, setQuizIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(null);
   const index = quizIndex;
 
   const { quiz, getQuizSessionById } = useSessionStore((state) => ({
     quiz: state.quizSession,
     getQuizSessionById: state.getQuizSessionById,
-  }))
+  }), shallow)
 
   useEffect(() => {
     try {
@@ -48,12 +50,13 @@ export default function StartQuiz() {
   };
 
   const handleAnswer = (optionId) => {
-    if(getQuizAnswer() === null) {
-      initQuizAnswer();
-    }
     const questionId = questions.id;
     setQuizAnswer(questionId, optionId);
-  }
+    setSelectedOption(optionId);
+  };
+  
+  const quizAns = JSON.parse(getQuizAnswer()) || initQuizAnswer();
+  const userAns = quizAns.map((ans) => ans.optionId);
 
   return (
     <Card className="w-[576px] h-[560px] mx-auto my-4">
@@ -74,16 +77,26 @@ export default function StartQuiz() {
           </Typography>
           <section className="flex flex-row justify-between my-2 mb-8">
             <Typography>
-              Pertanyaan {quizIndex + 1}/10
+              Pertanyaan {quizIndex + 1}/{quiz.questions?.length || 0}
             </Typography>
           </section>
-          <ButtonGroup size="md" variant="outlined" className="flex flex-col gap-4 p-1">
+          <ButtonGroup size="md" variant="filled" className="flex flex-col gap-4 p-1 divide-white">
             {questions.options?.map((option, index) => {
               const chipValue = String.fromCharCode(65 + index);
+              if(userAns.includes(option.id) || selectedOption === option.id) {
+                return (
+                  <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-blue-400" onClick={() => { handleAnswer(option.id) } }>
+                    <Chip size="sm" variant="ghost" value={chipValue} color="blue-gray" className="w-fit text-white" />
+                    <span className="text-slate-700 font-bold text-white">
+                      {option.option}
+                    </span>
+                  </Button>
+                )
+              }
               return (
-                <Button key={index} className="flex flex-row gap-4 items-center border rounded" onClick={() => { handleAnswer(option.id) } }>
-                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit" />
-                  <span className="text-slate-700 font-bold">
+                <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-slate-800" onClick={() => { handleAnswer(option.id) } }>
+                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit text-white bg-blue-gray" />
+                  <span className="text-white font-bold">
                     {option.option}
                   </span>
                 </Button>
