@@ -39,6 +39,10 @@ const routes = createBrowserRouter([
     errorElement: <Error500 />,
   },
   {
+    path: "about",
+    element: <AboutPage />,
+  },
+  {
     path: "/",
     element: <MainLayout />,
     errorElement: <Error500 />,
@@ -49,7 +53,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "dashboard/profile",
-        element: <ProfileUser />
+        element: <ProfileUser />,
       },
       {
         path: "quiz/:id",
@@ -57,12 +61,12 @@ const routes = createBrowserRouter([
       },
       {
         path: "category",
-        element: <CategoryPageUser />
+        element: <CategoryPageUser />,
       },
       {
         path: "quiz/session/:sessionId",
-        element: <StartQuiz />
-      }     
+        element: <StartQuiz />,
+      },
     ],
   },
   {
@@ -134,10 +138,6 @@ const routes = createBrowserRouter([
       {
         path: "register",
         element: <RegisterPage />,
-      },
-      {
-        path: "about",
-        element: <AboutPage />,
       },
     ],
   },
