@@ -1,12 +1,28 @@
 import { create } from "zustand";
 
 import CategoryAPI from "../services/admin";
+import MainAPI from "../services/main";
+
 import toast from "react-hot-toast";
 
 export const useStore = create((set) => ({
   categories: [],
   loading: false,
   error: false,
+  fetchCategoriesMain: async () => {
+    set({ loading: true });
+
+    const categories = await MainAPI.getCategories();
+
+    if (categories.error) {
+      toast.error(categories.error.message);
+
+      set({ loading: false });
+      return;
+    }
+
+    set({ categories, loading: false });
+  },
   fetchCategories: async () => {
     set({ loading: true });
     const categories = await CategoryAPI.getCategories();

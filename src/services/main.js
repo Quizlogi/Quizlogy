@@ -58,4 +58,37 @@ const getQuiz = async (id) => {
   }
 }
 
-export default { me, getDiscovery, getQuiz, updateMe };
+const getCategories = async () => {
+  try {
+    const response = await Axios.get("quiz/category", {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+};
+
+const getQuizByCategory = async (id) => {
+  try {
+    const response = await Axios.get(`quiz/category/${id}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+};
+
+export default {
+  me,
+  getDiscovery,
+  getQuiz,
+  getCategories,
+  getQuizByCategory,
+  updateMe,
+};
