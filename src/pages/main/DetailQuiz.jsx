@@ -7,7 +7,6 @@ import { IoArrowBack } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
 import { useEffect } from "react";
 import { BarLoader } from "react-spinners";
-import PropTypes from "prop-types";
 
 export default function DetailQuiz() {
   // global state
@@ -23,26 +22,24 @@ export default function DetailQuiz() {
 
   const onClickStartQuiz = async () => {
     const response = await sessionAPI.createQuizSession(id);
-    console.log(response);
 
     // session sudah ada
-    if(response.error) {
+    if (response.error) {
       const session = await sessionAPI.getQuizSession(id);
       console.log(session);
       navigate(`/quiz/session/${session.data[0].id}`);
     }
 
     // session baru
-    if(response.message === "Success") {
+    if (response.message === "Success") {
       navigate(`/quiz/session/${response.data.id}`);
     }
-  }
+  };
 
   useEffect(() => {
     getQuizDetail(id);
-  }, [id, getQuizDetail, user])
+  }, [id, getQuizDetail, user]);
 
-  console.log(detailQuiz);
   return (
     <div>
       {loading ? (
@@ -50,23 +47,35 @@ export default function DetailQuiz() {
           <BarLoader color="#0f172a" css="margin: 0 auto" />
         </div>
       ) : (
-      <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
-        <Link to="/dashboard">
-          <Button className="mb-2" size="sm" variant="outlined">
-            <span className="flex flex-row gap-2 items-center">
-              <IoArrowBack /> Back
-            </span>
-          </Button>
-        </Link>
+        <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
+          <Link to="/dashboard">
+            <Button className="mb-2" size="sm" variant="outlined">
+              <span className="flex flex-row gap-2 items-center">
+                <IoArrowBack /> Back
+              </span>
+            </Button>
+          </Link>
           <Card className="p-4 my-2">
             <div className="grid grid-cols-2 gap-4 mb-4">
-              <CardHeader floated={false} color="blue-gray" className="relative w-96 mx-auto mt-0">
+              <CardHeader
+                floated={false}
+                color="blue-gray"
+                className="relative w-96 mx-auto mt-0"
+              >
                 <img
-                  src={detailQuiz.image}
+                  src={
+                    detailQuiz?.image?.includes("http")
+                      ? detailQuiz.image
+                      : `${import.meta.env.VITE_CDN_URL}/${detailQuiz.image}`
+                  }
                   alt="card-image"
                   className="object-cover"
                 />
-                <Button color="green" className="w-full rounded-s-none rounded-r-none" onClick={onClickStartQuiz}>
+                <Button
+                  color="green"
+                  className="w-full rounded-s-none rounded-r-none"
+                  onClick={onClickStartQuiz}
+                >
                   <span className="flex flex-row gap-2 items-center">
                     <FaPlay />
                     Mulai Quiz
@@ -75,36 +84,29 @@ export default function DetailQuiz() {
               </CardHeader>
               <div className="flex flex-col gap-2">
                 {/* masih placeholder */}
-                <Chip size="sm" variant="outlined" value="kategori" color="blue-gray" className="w-fit" />
+                <Chip
+                  size="sm"
+                  variant="outlined"
+                  value="kategori"
+                  color="blue-gray"
+                  className="w-fit"
+                />
                 {/* ================= */}
                 <h5 className="text-xl font-bold line-clamp-2">
                   {detailQuiz.title}
                 </h5>
-                <Typography>
-                  quizId : {id}
-                </Typography>
+                <Typography>quizId : {id}</Typography>
                 <Typography>
                   {/* masih placeholder */}
                   10 Soal
                   {/* ================= */}
                 </Typography>
-                <p className="line-clamp-6">
-                  {detailQuiz.description}
-                </p>
+                <p className="line-clamp-6">{detailQuiz.description}</p>
               </div>
             </div>
           </Card>
-          </div>
+        </div>
       )}
     </div>
   );
-}
-
-DetailQuiz.propTypes = {
-  detailQuiz: PropTypes.shape({
-    image: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.string,
-  }).isRequired,
-  loading: PropTypes.bool.isRequired,
 }

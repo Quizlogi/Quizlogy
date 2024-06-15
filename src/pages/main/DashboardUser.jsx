@@ -12,6 +12,7 @@ export default function DashboardUser() {
   const user = useStoreAuth((state) => state.user);
   const { quiz, loading, getDiscovery } = useStoreQuiz((state) => ({
     quiz: state.quiz,
+    loading: state.loading,
     getDiscovery: state.getDiscovery,
   }));
 
@@ -26,17 +27,34 @@ export default function DashboardUser() {
         <OriginalCard user={user ?? {}} />
       </div>
       <div>
-        <Typography color="black" variant="h4" className="mb-12 text-center">
-          Quiz Populer
-        </Typography>
         {loading ? (
           <div className="flex justify-center mb-5">
             <BarLoader color="#0f172a" css="margin: 0 auto" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full pb-7 items-center justify-center">
-            <ImageCard data={quiz} />
-          </div>
+          <>
+            <Typography
+              color="black"
+              variant="h4"
+              className="mb-12 text-center"
+            >
+              Quiz Populer
+            </Typography>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full pb-7 items-center justify-center">
+              <ImageCard data={quiz.popular ?? []} />
+            </div>
+
+            <Typography
+              color="black"
+              variant="h4"
+              className="mb-12 text-center"
+            >
+              Quiz Terbaru
+            </Typography>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 h-full pb-7 items-center justify-center">
+              <ImageCard data={quiz.newest ?? []} />
+            </div>
+          </>
         )}
       </div>
     </div>

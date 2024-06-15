@@ -13,10 +13,25 @@ export const useStore = create((set, get) => ({
 
       const quiz = await QuizAPI.getDiscovery();
       set({ quiz });
-
-      set({ loading: false });
     } catch (error) {
       toast.error("Failed to fetch quiz");
+      set({ loading: false });
+    } finally {
+      set({ loading: false });
+    }
+  },
+  getQuizByCategory: async (id) => {
+    try {
+      get().reset();
+
+      set({ loading: true });
+
+      const data = await QuizAPI.getQuizByCategory(id);
+      set({ quiz: data.quiz });
+    } catch (error) {
+      toast.error("Failed to fetch quiz");
+      set({ loading: false });
+    } finally {
       set({ loading: false });
     }
   },
@@ -26,10 +41,10 @@ export const useStore = create((set, get) => ({
 
       const quiz = await InstructureAPI.getQuiz();
       set({ quiz });
-
-      set({ loading: false });
     } catch (error) {
       toast.error("Failed to fetch quiz");
+      set({ loading: false });
+    } finally {
       set({ loading: false });
     }
   },
