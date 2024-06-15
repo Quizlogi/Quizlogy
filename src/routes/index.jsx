@@ -32,6 +32,7 @@ import CreateQuiz from "../pages/penguji/CreateQuiz";
 import QuestionQuiz from "../pages/penguji/QuestionQuiz";
 import EditQuiz from "../pages/penguji/EditQuiz";
 import QuizByCategoryPage from "../pages/main/QuizByCategoryPage";
+import HistoryPage from "../pages/main/HistoryPage";
 
 const routes = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const routes = createBrowserRouter([
       {
         path: "category/:id",
         element: <QuizByCategoryPage />,
+      },
+      {
+        path: "history",
+        element: <HistoryPage />,
       },
       {
         path: "quiz/session/:sessionId",
