@@ -27,12 +27,12 @@ export function OriginalCard({ user }) {
         </div>
       </CardBody>
       <CardFooter className="flex flex-row pt-0 mb-8">
-        <a href="#" className="inline-block">
+        <Link to={"/history"} className="inline-block">
           <Button size="sm" variant="text" className="flex items-center gap-2">
             <FaHistory />
             Riwayat quiz
           </Button>
-        </a>
+        </Link>
         <Link to="/dashboard/profile" className="inline-block">
           <Button size="sm" variant="text" className="flex items-center gap-2">
             Menuju ke profil
