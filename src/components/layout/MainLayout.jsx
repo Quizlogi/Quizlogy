@@ -20,15 +20,18 @@ export function MainLayout() {
     }
   }, [user, navigate, loading]);
   return (
-    <>
+    <div
+      className="h-full"
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <NavbarMain />
 
-      <main>
+      <main style={{ flex: 1 }}>
         <Outlet />
         <ScrollRestoration />
       </main>
 
       <LogoFooter />
-    </>
+    </div>
   );
 }
