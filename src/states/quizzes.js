@@ -35,6 +35,19 @@ export const useStore = create((set, get) => ({
       set({ loading: false });
     }
   },
+  searchQuiz: async (query) => {
+    try {
+      set({ loading: true });
+
+      const quiz = await QuizAPI.search(query);
+      set({ quiz });
+    } catch (error) {
+      toast.error("Failed to fetch quiz");
+      set({ loading: false });
+    } finally {
+      set({ loading: false });
+    }
+  },
   getHistoryQuiz: async () => {
     try {
       set({ loading: true });
