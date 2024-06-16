@@ -1,5 +1,6 @@
 import { Toaster } from 'react-hot-toast';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export function RegisterInput({
   name,
@@ -18,57 +19,62 @@ export function RegisterInput({
       <div className='w-full flex flex-col max-w-[500px] mb-12 md:mb-24 p-4 md:p-0 sm:max-w-full sm:p-2'>
         {' '}
         <div className='w-full flex flex-col mb-6 md:mb-10 sm:mb-4'>
-          <h3 className='text-3xl font-semibold mb-2'>Register</h3>
-          <p className='text-base mb-2'>
-            Welcome Back! Please enter your details
-          </p>
+          <div className='flex flex-col-3 items-center justify-center'>
+            <h3 className='text-3xl font-semibold mb-2'>Register</h3>
+          </div>
+          <div className='flex flex-col-3 items-center justify-center'>
+            <p className='text-base mb-2'>
+              Welcome Back! Please enter your details
+            </p>
+          </div>
         </div>
-        <form className='w-full flex flex-col mb-6 md:mb-10' onSubmit={onSubmit}>
+        <form className='flex flex-col mb-6 md:mb-10' onSubmit={onSubmit}>
           {' '}
-          <div>
+          <div></div>
+          <div className='flex flex-col-3 items-center justify-center'>
             <input
               type='name'
               placeholder='Name'
-              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              className='w-96 text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
               value={name}
               onInput={setName}
               required
             />
           </div>
-          <div>
+          <div className='flex flex-col-3  items-center justify-center'>
             <input
               type='email'
               placeholder='Email'
-              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              className='w-96 text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
               value={email}
               onInput={setEmail}
               required
             />
           </div>
-          <div>
+          <div className='flex flex-col-3  items-center justify-center'>
             <input
               type='username'
               placeholder='Username'
-              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              className='w-96 text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
               value={username}
               onInput={setUsername}
               required
             />
           </div>
-          <div>
+          <div className='flex flex-col-3  items-center justify-center'>
             <input
               type='password'
               placeholder='Password'
-              className='w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
+              className='w-96 text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:outline-none'
               value={password}
               onInput={setPassword}
               required
             />
           </div>
-          <div className='w-full flex flex-col my-4'>
+          <div className='flex flex-col-3 my-4 items-center justify-center'>
             <button
               type='submit'
-              className='w-full text-white my-2 font-semibold bg-secondary rounded-md p-4 text-center flex items-center justify-center hover:bg-primary transition-all duration-300 cursor-pointer'>
+              className='w-64 text-white my-8 font-semibold bg-secondary rounded-md p-4 text-center flex items-center justify-center hover:bg-primary transition-all duration-300 cursor-pointer'>
               Sign up
             </button>{' '}
           </div>
