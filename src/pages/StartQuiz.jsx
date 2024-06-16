@@ -4,17 +4,19 @@ import { getQuizAnswer, initQuizAnswer, setQuizAnswer } from "../utils/userAnswe
 import { Card, Button, ButtonGroup, Chip, Typography, IconButton } from "@material-tailwind/react";
 import { GrCaretPrevious, GrCaretNext } from "react-icons/gr";
 import { Toaster } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { shallow } from "zustand/shallow";
 
 export default function StartQuiz() {
   const { sessionId } = useParams();
   const [quizIndex, setQuizIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(null);
   const index = quizIndex;
 
   const { quiz, getQuizSessionById } = useSessionStore((state) => ({
     quiz: state.quizSession,
     getQuizSessionById: state.getQuizSessionById,
-  }))
+  }), shallow)
 
   useEffect(() => {
     try {
@@ -48,12 +50,13 @@ export default function StartQuiz() {
   };
 
   const handleAnswer = (optionId) => {
-    if(getQuizAnswer() === null) {
-      initQuizAnswer();
-    }
     const questionId = questions.id;
     setQuizAnswer(questionId, optionId);
-  }
+    setSelectedOption(optionId);
+  };
+  
+  const quizAns = getQuizAnswer() || initQuizAnswer();
+  const userAns = quizAns.map((ans) => ans.optionId);
 
   return (
     <Card className="w-[576px] h-[560px] mx-auto my-4">
@@ -74,16 +77,28 @@ export default function StartQuiz() {
           </Typography>
           <section className="flex flex-row justify-between my-2 mb-8">
             <Typography>
-              Pertanyaan {quizIndex + 1}/10
+              Pertanyaan {quizIndex + 1}/{quiz.questions?.length || 0}
             </Typography>
           </section>
-          <ButtonGroup size="md" variant="outlined" className="flex flex-col gap-4 p-1">
+          <ButtonGroup size="md" variant="filled" className="flex flex-col gap-4 p-1 divide-white">
+            {/* loop through the quiz option answer */}
             {questions.options?.map((option, index) => {
               const chipValue = String.fromCharCode(65 + index);
+              // check if the user answer includes the option id
+              if(userAns.includes(option.id) || selectedOption === option.id) {
+                return (
+                  <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-violet-600" onClick={() => { handleAnswer(option.id) } }>
+                    <Chip size="sm" variant="ghost" value={chipValue} color="blue-gray" className="w-fit text-white" />
+                    <span className="text-slate-700 font-bold text-white">
+                      {option.option}
+                    </span>
+                  </Button>
+                )
+              }
               return (
-                <Button key={index} className="flex flex-row gap-4 items-center border rounded" onClick={() => { handleAnswer(option.id) } }>
-                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit" />
-                  <span className="text-slate-700 font-bold">
+                <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-zinc-100" onClick={() => { handleAnswer(option.id) } }>
+                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit bg-blue-gray" />
+                  <span className="font-bold text-gray-900">
                     {option.option}
                   </span>
                 </Button>
@@ -101,10 +116,20 @@ export default function StartQuiz() {
               </IconButton>
             )}
             {
+              // check if the quiz index is the last question
               quizIndex === (quiz.questions?.length || 0) - 1 ? (
-                <Button size="sm" variant="outlined" disabled>
-                  Submit
-                </Button>
+                // check if the user has answered all the questions
+                quizAns.length === quiz.questions?.length ? (
+                  <Link to={`/quiz/session/${sessionId}/end`}>
+                    <Button size="sm" className="bg-violet-600 h-12" variant="filled" to={`/quiz/session/${sessionId}/end`}>
+                      Submit
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button size="sm" className="bg-violet-600" variant="filled" disabled>
+                    Submit
+                  </Button>
+                )
               ) : (
                 <IconButton size="lg" variant="outlined" onClick={nextQuestion}>
                   <GrCaretNext />

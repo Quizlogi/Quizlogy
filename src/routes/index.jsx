@@ -20,6 +20,7 @@ import DetailQuiz from "../pages/main/DetailQuiz";
 import CategoryPageUser from "../pages/main/CategoryPage";
 import StartQuiz from "../pages/StartQuiz";
 import ProfileUser from "../pages/main/ProfileUser";
+import ResultQuiz from "../pages/ResultQuiz";
 
 import DashboardAdmin from "../pages/admin/Dashboard";
 import UserPage from "../pages/admin/User";
@@ -82,6 +83,10 @@ const routes = createBrowserRouter([
         path: "quiz/session/:sessionId",
         element: <StartQuiz />,
       },
+      {
+        path: "quiz/session/:sessionId/end",
+        element: <ResultQuiz />
+      }
     ],
   },
   {

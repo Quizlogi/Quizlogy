@@ -1,6 +1,7 @@
 import Axios from "./";
 
 import { getToken } from "../utils/tokenHandler";
+import { getQuizAnswer } from "../utils/userAnswer";
 
 const createQuizSession = async (quizId) => {
   try {
@@ -52,12 +53,31 @@ const getSessionById = async (sessionId, quizId) => {
   }
 }
 
-// const submitAnswer = async (sessionId, questionId, answer) => {
-
-// }
+const submitAnswer = async (sessionId) => {
+  if(getQuizAnswer() === null) {
+    return { error: "No answer found" };
+  }
+  try {
+    const response = await Axios.post(`quiz/session/${sessionId}/end`, 
+      {
+        data: getQuizAnswer()
+      },
+      {
+        headers: {
+          Authorization: getToken(),
+        }
+      }
+    );
+    return response.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+}
 
 export default {
   createQuizSession,
   getQuizSession,
-  getSessionById 
+  getSessionById,
+  submitAnswer
 };
+export { submitAnswer };
