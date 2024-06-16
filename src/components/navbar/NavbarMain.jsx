@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 import { useStore } from "../../states/auth";
 import { useNavigate } from "react-router-dom";
+import { SlMagnifier } from "react-icons/sl";
 
 export function NavbarMain() {
   const navigate = useNavigate();
@@ -34,7 +35,6 @@ export function NavbarMain() {
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Link to="/dashboard">
-      
         <Typography
           as="li"
           variant="small"
@@ -78,9 +78,20 @@ export function NavbarMain() {
               fill="#90A4AE"
             />
           </svg>
-            <a href="#" className="flex items-center">
-              Category
-            </a>
+          <a href="#" className="flex items-center">
+            Category
+          </a>
+        </Typography>
+      </Link>
+      <Link to="/search">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="flex items-center gap-x-2 p-1 font-medium"
+        >
+          <SlMagnifier className="h-4 w-4" />
+          Search
         </Typography>
       </Link>
     </ul>

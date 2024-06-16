@@ -45,6 +45,19 @@ const getDiscovery = async () => {
   }
 };
 
+const search = async (query) => {
+  try {
+    const response = await Axios.get(`quiz/search?query=${query}`, {
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return response.data.data;
+  } catch (err) {
+    return { error: err.response.data };
+  }
+};
+
 const getHistoryQuiz = async () => {
   try {
     const response = await Axios.get("quiz/history", {
@@ -101,6 +114,7 @@ export default {
   me,
   getDiscovery,
   getQuiz,
+  search,
   getHistoryQuiz,
   getCategories,
   getQuizByCategory,

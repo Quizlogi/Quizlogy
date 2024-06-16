@@ -1,4 +1,6 @@
-import VinaImg from '/public/vina.jpg';
+import Boy1 from '/public/boy-1.png';
+import Boy2 from '/public/boy-2.png';
+import Girl from '/public/girl.png';
 import { motion } from 'framer-motion';
 import { fadeIn } from '/variants';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
@@ -30,7 +32,7 @@ export default function AboutUs() {
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <div>
                   <img
-                    src={VinaImg}
+                    src={Boy1}
                     alt='Naufal profile'
                     className='mb-1 w-30 h-30 border-4 rounded-lg  group-hover:border-primary transition-all duration-300'
                   />
@@ -63,7 +65,7 @@ export default function AboutUs() {
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <div>
                   <img
-                    src={VinaImg}
+                    src={Girl}
                     alt='Vina profile'
                     className='mb-2 w-30 h-30 border-4 rounded-lg  group-hover:border-primary transition-all duration-300'
                   />
@@ -97,7 +99,7 @@ export default function AboutUs() {
               <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
                 <div>
                   <img
-                    src={VinaImg}
+                    src={Boy2}
                     alt='Zalfa profile'
                     className='mb-1 w-30 h-30 border-4 rounded-lg group-hover:border-primary transition-all duration-300'
                   />
