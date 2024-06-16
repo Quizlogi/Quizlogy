@@ -121,7 +121,7 @@ export default function StartQuiz() {
                 // check if the user has answered all the questions
                 quizAns.length === quiz.questions?.length ? (
                   <Link to={`/quiz/session/${sessionId}/end`}>
-                    <Button size="sm" className="bg-violet-600" variant="filled" to={`/quiz/session/${sessionId}/end`}>
+                    <Button size="sm" className="bg-violet-600 h-12" variant="filled" to={`/quiz/session/${sessionId}/end`}>
                       Submit
                     </Button>
                   </Link>
