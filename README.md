@@ -47,6 +47,12 @@ Sebelum menjalankan aplikasi ini, anda harus memasang beberapa hal di dalam komp
   ```sh
   npm install npm@latest -g
   ```
+* Node.js
+  ```sh
+  https://nodejs.org/en/download/
+  ```
+* Quizlogy Services (Quizlogy API)
+  [Klik Disini](https://github.com/Quizlogi/QuizlogyServices)
 
 ### Installation
 
@@ -64,4 +70,9 @@ Di bawah ini adalah cara untuk memasang aplikasi Quizlogy di komputer anda:
 3. Run the development
    ```sh
    npm run dev
+   ```
+4. Run the production
+   ```sh
+   npm run build
+   npm start
    ```
