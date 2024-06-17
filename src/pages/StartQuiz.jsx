@@ -56,7 +56,7 @@ export default function StartQuiz() {
   };
   
   const quizAns = getQuizAnswer() || initQuizAnswer();
-  const userAns = quizAns.map((ans) => ans.optionId);
+  const userAns = quizAns.map((ans) => ans.option_id);
 
   return (
     <Card className="w-[576px] h-[560px] mx-auto my-4">
@@ -65,7 +65,7 @@ export default function StartQuiz() {
         <div className="upper-section">
           {/* unchanged section */}
           <section className="flex flex-row justify-between">
-            <Typography>
+            <Typography variant="paragraph">
               {title}
             </Typography>
             <Chip size="sm" variant="outlined" value={category} color="blue-gray" className="w-fit" />
@@ -76,7 +76,7 @@ export default function StartQuiz() {
             {questions.question}
           </Typography>
           <section className="flex flex-row justify-between my-2 mb-8">
-            <Typography>
+            <Typography variant="paragraph">
               Pertanyaan {quizIndex + 1}/{quiz.questions?.length || 0}
             </Typography>
           </section>
@@ -87,9 +87,9 @@ export default function StartQuiz() {
               // check if the user answer includes the option id
               if(userAns.includes(option.id) || selectedOption === option.id) {
                 return (
-                  <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-violet-600" onClick={() => { handleAnswer(option.id) } }>
-                    <Chip size="sm" variant="ghost" value={chipValue} color="blue-gray" className="w-fit text-white" />
-                    <span className="text-slate-700 font-bold text-white">
+                  <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-violet-600 text-white" onClick={() => { handleAnswer(option.id) } }>
+                    <Chip size="sm" variant="ghost" value={chipValue} color="blue-gray" className="w-fit text-inherit" />
+                    <span className="font-bold text-inherit">
                       {option.option}
                     </span>
                   </Button>
