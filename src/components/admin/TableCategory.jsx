@@ -15,6 +15,10 @@ export default function TableCategory({ data, onEdit, onDelete }) {
       sortable: true,
     },
     {
+      name: "Total Quiz",
+      selector: (row) => row._count.quiz,
+    },
+    {
       name: "Actions",
       cell: (row) => (
         <div className="flex items-center gap-4">
