@@ -28,8 +28,8 @@ export default function ResultQuiz() {
 
     fetchQuizResult();
   }, [sessionId]);
-
-  console.log(quizResult);
+  
+  const score = quizResult?.score || 0;
 
   return (
     <Card className="w-[576px] h-[560px] mx-auto items-center my-4">
@@ -42,7 +42,7 @@ export default function ResultQuiz() {
           {[...Array(3)].map((star, index) => {
             const starCount = index + 1;
             
-            if(quizResult?.score < 30 || quizResult?.score === undefined) {
+            if(score < 30 || score === undefined) {
               return (
                 <FaStar
                   key={index}
@@ -51,7 +51,7 @@ export default function ResultQuiz() {
                 />
               );
             }
-            if(quizResult?.score < 70) {
+            if(score < 70) {
               return (
                 <FaStar
                   key={index}
@@ -60,7 +60,7 @@ export default function ResultQuiz() {
                 />
               );
             }
-            if(quizResult?.score < 90) {
+            if(score < 90) {
               return (
                 <FaStar
                   key={index}
@@ -82,7 +82,7 @@ export default function ResultQuiz() {
         <div>
           <div className="flex flex-col items-center">
             <Typography variant="h4">
-              {quizResult?.score || 0}
+              { score.toFixed(2)  } / 100
             </Typography>
           </div>
         </div>

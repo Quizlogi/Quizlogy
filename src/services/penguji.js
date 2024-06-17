@@ -119,7 +119,7 @@ const createQuestion = async (id, value) => {
 
 const updateQuestion = async (id, value) => {
   const url = location.href;
-  const quizId = url.split("/").pop();
+  const quizId = url.split("/").reverse()[1];
 
   try {
     const response = await Axios.put(
