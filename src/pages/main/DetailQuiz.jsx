@@ -26,7 +26,6 @@ export default function DetailQuiz() {
     // session sudah ada
     if (response.error) {
       const session = await sessionAPI.getQuizSession(id);
-      console.log(session);
       navigate(`/quiz/session/${session.data[0].id}`);
     }
 
@@ -83,23 +82,18 @@ export default function DetailQuiz() {
                 </Button>
               </CardHeader>
               <div className="flex flex-col gap-2">
-                {/* masih placeholder */}
                 <Chip
                   size="sm"
                   variant="outlined"
-                  value="kategori"
+                  value={detailQuiz.category?.name || "Uncategorized"}
                   color="blue-gray"
                   className="w-fit"
                 />
-                {/* ================= */}
                 <h5 className="text-xl font-bold line-clamp-2">
                   {detailQuiz.title}
                 </h5>
-                <Typography>quizId : {id}</Typography>
                 <Typography>
-                  {/* masih placeholder */}
-                  10 Soal
-                  {/* ================= */}
+                  {detailQuiz._count?.questions} Soal
                 </Typography>
                 <p className="line-clamp-6">{detailQuiz.description}</p>
               </div>

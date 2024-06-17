@@ -26,9 +26,6 @@ export default function StartQuiz() {
     }
   }, [getQuizSessionById, sessionId]);
 
-  // check if quiz is empty
-  console.log(`respons quiz index ${index}`, quiz)
-
   // Define variables with checks
   const title = quiz?.title || "";
   const category = quiz?.category?.name || "";
