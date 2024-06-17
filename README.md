@@ -71,3 +71,8 @@ Di bawah ini adalah cara untuk memasang aplikasi Quizlogy di komputer anda:
    ```sh
    npm run dev
    ```
+4. Run the production
+   ```sh
+   npm run build
+   npm start
+   ```
