@@ -42,7 +42,7 @@ export default function ResultQuiz() {
           {[...Array(3)].map((star, index) => {
             const starCount = index + 1;
             
-            if(quizResult?.score < 30) {
+            if(quizResult?.score < 30 || quizResult?.score === undefined) {
               return (
                 <FaStar
                   key={index}
