@@ -101,7 +101,7 @@ export function NavbarMain() {
     <Navbar className="mx-auto max-w-full px-4 py-2 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         <Link to="/">
-          <img src="logo-quizlogy.svg" alt="Quizlogy" width="50" />
+          <img src="/logo-quizlogy.svg" alt="Quizlogy" width="50" />
         </Link>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
