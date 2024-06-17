@@ -52,7 +52,7 @@ Sebelum menjalankan aplikasi ini, anda harus memasang beberapa hal di dalam komp
   https://nodejs.org/en/download/
   ```
 * Quizlogy Services (Quizlogy API)
-  [Klik disini](https://github.com/Quizlogi/QuizlogyServices)
+  [Klik Disini](https://github.com/Quizlogi/QuizlogyServices)
 
 ### Installation
 
