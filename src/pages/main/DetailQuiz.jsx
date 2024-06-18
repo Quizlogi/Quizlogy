@@ -13,7 +13,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
 import { useEffect } from "react";
 import { BarLoader } from "react-spinners";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function DetailQuiz() {
   // global state
