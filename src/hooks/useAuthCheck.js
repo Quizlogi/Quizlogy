@@ -17,6 +17,7 @@ export default function useAuthCheck() {
       setLoading(false);
     } else {
       if (
+        window.location.pathname !== "/" &&
         window.location.pathname !== "/login" &&
         window.location.pathname !== "/register"
       )

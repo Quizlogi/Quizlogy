@@ -5,7 +5,7 @@ import MainAPI from "../services/main";
 
 import toast from "react-hot-toast";
 
-export const useStore = create((set) => ({
+export const useStore = create((set, get) => ({
   categories: [],
   loading: false,
   error: false,
@@ -38,10 +38,8 @@ export const useStore = create((set) => ({
       return;
     }
 
-    set((state) => ({
-      categories: [...state.categories, category],
-      loading: false,
-    }));
+    const categories = get().categories;
+    set({ categories: [...categories, category], loading: false });
 
     toast.success("Category created successfully");
   },
@@ -55,12 +53,11 @@ export const useStore = create((set) => ({
       return;
     }
 
-    set((state) => ({
-      categories: state.categories.map((item) =>
-        item.id === id ? category : item
-      ),
-      loading: false,
-    }));
+    const categories = get().categories;
+    const index = categories.findIndex((item) => item.id === id);
+    categories[index] = category;
+
+    set({ categories, loading: false });
 
     toast.success("Category updated successfully");
   },
