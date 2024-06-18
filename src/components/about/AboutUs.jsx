@@ -28,15 +28,8 @@ export default function AboutUs() {
           viewport={{ once: false, amount: 0.7 }}
           className='w-full lg:w-3/4'>
           <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-start md:gap-12 gap-8 px-4 lg:px-0'>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px] rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
-              <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
-                <div>
-                  <img
-                    src={Boy1}
-                    alt='Naufal profile'
-                    className='mb-1 w-30 h-30 border-4 rounded-lg  group-hover:border-primary transition-all duration-300'
-                  />
-                </div>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px] rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300'>
+              <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 '>
                 <div>
                   <h5 className='text-lg font-semibold text-primary px-5  mt-1 group-hover:text-secondary'>
                     M. Naufal Faqih
@@ -46,13 +39,13 @@ export default function AboutUs() {
                   </p>
                 </div>
                 <div className='flex space-x-2 px-5 mt-4'>
-                  <Link to='https://www.linkedin.com'>
+                  <Link to='https://www.linkedin.com/in/m-naufal-faqih'>
                     <FaLinkedin
                       size={30}
                       className=' group-hover:text-secondary'
                     />
                   </Link>
-                  <Link to='https://github.com'>
+                  <Link to='https://github.com/KatowProject'>
                     <FaGithub
                       size={30}
                       className=' group-hover:text-secondary'
@@ -61,16 +54,8 @@ export default function AboutUs() {
                 </div>
               </div>
             </div>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px]  rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer md:mt-16'>
-              <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
-                <div>
-                  <img
-                    src={Girl}
-                    alt='Vina profile'
-                    className='mb-2 w-30 h-30 border-4 rounded-lg  group-hover:border-primary transition-all duration-300'
-                  />
-                </div>
-
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px]  rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 md:mt-16'>
+              <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 '>
                 <div>
                   <h5 className='text-lg font-semibold text-primary px-5  mt-1 group-hover:text-secondary'>
                     Vina Nur Fauziah
@@ -80,13 +65,13 @@ export default function AboutUs() {
                   </p>
                 </div>
                 <div className='flex space-x-2 px-5 mt-4'>
-                <Link to='https://www.linkedin.com'>
+                  <Link to='https://www.linkedin.com/in/vinanurfauziahr/'>
                     <FaLinkedin
                       size={30}
                       className=' group-hover:text-secondary'
                     />
                   </Link>
-                  <Link to='https://github.com'>
+                  <Link to='https://github.com/vinaanurfauziah'>
                     <FaGithub
                       size={30}
                       className=' group-hover:text-secondary'
@@ -95,15 +80,8 @@ export default function AboutUs() {
                 </div>
               </div>
             </div>
-            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px]  rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 cursor-pointer'>
-              <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300 cursor-pointer'>
-                <div>
-                  <img
-                    src={Boy2}
-                    alt='Zalfa profile'
-                    className='mb-1 w-30 h-30 border-4 rounded-lg group-hover:border-primary transition-all duration-300'
-                  />
-                </div>
+            <div className='bg-[rgba(255, 255, 255, 0.04)] border-[1px]  rounded-2xl shadow-3xl p-8 items-center flex justify-center group hover:-translate-y-4 transition-all hover:bg-indigo-950 duration-300 '>
+              <div className='text-primary rounded-2xl flex flex-col items-center justify-center group-hover:text-secondary transition-all duration-300'>
                 <div>
                   <h5 className='text-lg font-semibold text-primary px-5  mt-1 group-hover:text-secondary'>
                     Zalfa Mufrih Rifda
@@ -113,13 +91,13 @@ export default function AboutUs() {
                   </p>
                 </div>
                 <div className='flex space-x-2 px-5 mt-4'>
-                  <Link to='https://www.linkedin.com'>
+                  <Link to='https://id.linkedin.com/in/zalfarmdhn'>
                     <FaLinkedin
                       size={30}
                       className=' group-hover:text-secondary'
                     />
                   </Link>
-                  <Link to='https://github.com'>
+                  <Link to='https://github.com/zalfarmdhn'>
                     <FaGithub
                       size={30}
                       className=' group-hover:text-secondary'
