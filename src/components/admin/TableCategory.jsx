@@ -16,7 +16,7 @@ export default function TableCategory({ data, onEdit }) {
     },
     {
       name: "Total Quiz",
-      selector: (row) => row._count.quiz,
+      selector: (row) => row._count?.quiz ?? 0,
     },
     {
       name: "Actions",
