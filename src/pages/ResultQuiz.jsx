@@ -32,7 +32,7 @@ export default function ResultQuiz() {
   const score = quizResult?.score || 0;
 
   return (
-    <Card className="w-[576px] h-[560px] mx-auto items-center my-4">
+    <Card className="lg:w-[576px] sm:w-dvh h-[560px] mx-auto items-center my-4">
       <div className="flex flex-col items-center justify-center h-full gap-4">
         <div>
           <Typography variant="h2">Result Quiz</Typography>
