@@ -19,6 +19,7 @@ import { Toaster } from "react-hot-toast";
 export default function UserPage() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
 
   const [name, setName, resetName] = useInput("");
   const [email, setEmail, resetEmail] = useInput("");
@@ -59,7 +60,16 @@ export default function UserPage() {
   };
 
   const onDelete = (row) => {
-    removeUser(row.id);
+    setSelectedUser(row);
+    setOpenDelete(true);
+  };
+
+  const handleDelete = async () => {
+    setOpenDelete(false);
+
+    await removeUser(selectedUser.id);
+
+    setSelectedUser(null);
   };
 
   const handleSubmit = async () => {
@@ -138,6 +148,19 @@ export default function UserPage() {
             )}
           </CardBody>
         </Card>
+
+        <ModalComponent
+          open={openDelete}
+          handleOpen={() => setOpenDelete(!openDelete)}
+          handleSubmit={handleDelete}
+          title="Confirm Removal"
+        >
+          <div className="text-center">
+            <Typography variant="body1" color="blue-gray">
+              Are you sure you want to remove this user?
+            </Typography>
+          </div>
+        </ModalComponent>
 
         <ModalComponent
           open={open}

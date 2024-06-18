@@ -11,13 +11,14 @@ const LoginPage = () => {
   const [password, setPassword] = useInput("");
 
   const { login } = useStore((state) => ({
-    user: state.user,
     login: state.login,
   }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
+
+    window.location.reload();
   };
 
   return (

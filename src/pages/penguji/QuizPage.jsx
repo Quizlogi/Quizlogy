@@ -13,9 +13,12 @@ import {
 } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 import { UserPlusIcon } from "@heroicons/react/24/solid";
+import ModalComponent from "../../components/modal";
 
 export default function QuizPage() {
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [selectedQuiz, setselectedQuiz] = useState(null);
 
   const { quiz, loading, getQuiz, deleteQuiz } = useStore((state) => ({
     quiz: state.quiz,
@@ -32,8 +35,14 @@ export default function QuizPage() {
     setOpen(!open);
   };
 
+  const handleDelete = () => {
+    deleteQuiz(selectedQuiz.id);
+    setOpenDelete(!openDelete);
+  };
+
   const onDelete = (row) => {
-    deleteQuiz(row.id);
+    setselectedQuiz(row);
+    setOpenDelete(!openDelete);
   };
 
   return (
@@ -49,14 +58,15 @@ export default function QuizPage() {
                 </Typography>
               </div>
               <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-              <Link to='/penguji/create'>
-                <Button
-                  className="flex items-center gap-3"
-                  size="sm"
-                  onClick={handleOpen}
-                >
-                  <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add Quiz
-                </Button>
+                <Link to="/penguji/create">
+                  <Button
+                    className="flex items-center gap-3"
+                    size="sm"
+                    onClick={handleOpen}
+                  >
+                    <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add
+                    Quiz
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -71,6 +81,19 @@ export default function QuizPage() {
             )}
           </CardBody>
         </Card>
+
+        <ModalComponent
+          open={openDelete}
+          handleOpen={() => setOpenDelete(!openDelete)}
+          handleSubmit={handleDelete}
+          title="Confirm Removal"
+        >
+          <div className="text-center">
+            <Typography variant="body1" color="blue-gray">
+              Are you sure you want to remove this quiz?
+            </Typography>
+          </div>
+        </ModalComponent>
       </div>
     </>
   );

@@ -1,23 +1,28 @@
-import { useState } from "react";
 import { useStore } from "../states/auth";
 import { hasToken } from "../utils/tokenHandler";
 import { useEffect } from "react";
 
 export default function useAuthCheck() {
-  const { user, setUser } = useStore((state) => ({
+  const { user, setUser, setLoading, loading } = useStore((state) => ({
     user: state.user,
     setUser: state.setUser,
+    loading: state.loading,
+    setLoading: state.setLoading,
   }));
-
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (hasToken() && !user) {
-      setUser().finally(() => setLoading(false));
-    } else {
+      setUser();
+    } else if (hasToken() && user) {
       setLoading(false);
+    } else {
+      if (
+        window.location.pathname !== "/login" &&
+        window.location.pathname !== "/register"
+      )
+        window.location.href = "/login";
     }
-  }, [user, setUser]);
+  }, [user, setUser, setLoading]);
 
   return [user, loading];
 }

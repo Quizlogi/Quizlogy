@@ -1,4 +1,10 @@
-import { Button, Card, CardHeader, Chip, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Card,
+  CardHeader,
+  Chip,
+  Typography,
+} from "@material-tailwind/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useStore as useStoreQuiz } from "../../states/main";
 import { useStore as useStoreAuth } from "../../states/auth";
@@ -7,6 +13,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
 import { useEffect } from "react";
 import { BarLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 export default function DetailQuiz() {
   // global state
@@ -26,6 +33,9 @@ export default function DetailQuiz() {
     // session sudah ada
     if (response.error) {
       const session = await sessionAPI.getQuizSession(id);
+
+      toast.success("Session sudah ada, lanjutkan session sebelumnya");
+
       navigate(`/quiz/session/${session.data[0].id}`);
     }
 
@@ -54,8 +64,8 @@ export default function DetailQuiz() {
               </span>
             </Button>
           </Link>
-          <Card className="p-4 my-2 md:w-dvh md:overflow-auto md:flex-row justify-center">
-            <div className='grid md:grid-cols-2 gap-6 mb-4'>
+          <Card className="p-4 my-2 ">
+            <div className="grid grid-cols-2 gap-4 mb-4">
               <CardHeader
                 floated={false}
                 color="blue-gray"
@@ -92,9 +102,7 @@ export default function DetailQuiz() {
                 <h5 className="text-xl font-bold line-clamp-2">
                   {detailQuiz.title}
                 </h5>
-                <Typography>
-                  {detailQuiz._count?.questions} Soal
-                </Typography>
+                <Typography>{detailQuiz._count?.questions} Soal</Typography>
                 <p className="line-clamp-6">{detailQuiz.description}</p>
               </div>
             </div>

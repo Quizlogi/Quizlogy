@@ -82,24 +82,46 @@ export default function StartQuiz() {
             {questions.options?.map((option, index) => {
               const chipValue = String.fromCharCode(65 + index);
               // check if the user answer includes the option id
-              if(userAns.includes(option.id) || selectedOption === option.id) {
-                return (
-                  <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-violet-600 text-white" onClick={() => { handleAnswer(option.id) } }>
-                    <Chip size="sm" variant="ghost" value={chipValue} color="blue-gray" className="w-fit text-inherit" />
-                    <span className="font-bold text-inherit">
-                      {option.option}
-                    </span>
-                  </Button>
-                )
-              }
-              return (
-                <Button key={index} className="flex flex-row gap-4 items-center border-0 rounded bg-zinc-100" onClick={() => { handleAnswer(option.id) } }>
-                  <Chip size="sm" variant="outlined" value={chipValue} color="blue-gray" className="w-fit bg-blue-gray" />
+              return userAns.includes(option.id) ||
+                selectedOption === option.id ? (
+                <Button
+                  key={index}
+                  className="flex flex-row gap-4 items-center border-0 rounded bg-violet-600 text-white"
+                  onClick={() => {
+                    handleAnswer(option.id);
+                  }}
+                >
+                  <Chip
+                    size="sm"
+                    variant="ghost"
+                    value={chipValue}
+                    color="blue-gray"
+                    className="w-fit text-inherit"
+                  />
+                  <span className="font-bold text-inherit">
+                    {option.option}
+                  </span>
+                </Button>
+              ) : (
+                <Button
+                  key={index}
+                  className="flex flex-row gap-4 items-center border-0 rounded bg-zinc-100"
+                  onClick={() => {
+                    handleAnswer(option.id);
+                  }}
+                >
+                  <Chip
+                    size="sm"
+                    variant="outlined"
+                    value={chipValue}
+                    color="blue-gray"
+                    className="w-fit bg-blue-gray"
+                  />
                   <span className="font-bold text-gray-900">
                     {option.option}
                   </span>
                 </Button>
-              )
+              );
             })}
           </ButtonGroup>
         </div>
