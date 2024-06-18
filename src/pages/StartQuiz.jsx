@@ -56,16 +56,16 @@ export default function StartQuiz() {
   const userAns = quizAns.map((ans) => ans.option_id);
 
   return (
-    <Card className="w-[576px] h-[560px] mx-auto my-4">
+    <Card className='lg:w-[576px] h-max mx-auto my-4 sm:w-dvh'>
       <Toaster />
-      <article className="flex flex-col justify-between h-full m-6">
+      <article className="flex flex-col justify-between h-fit m-6 gap-4">
         <div className="upper-section">
           {/* unchanged section */}
-          <section className="flex flex-row justify-between">
-            <Typography variant="paragraph">
+          <section className="flex lg:flex-row max-sm:flex-col-reverse justify-between">
+            <Typography variant="paragraph" className="flex-1">
               {title}
             </Typography>
-            <Chip size="sm" variant="outlined" value={category} color="blue-gray" className="w-fit" />
+            <Chip size="sm" variant="outlined" value={category} color="blue-gray" className="w-fit flex-0" />
           </section>
           <hr className="my-2 border-t border-slate-300"/>
           {/* changed section */}

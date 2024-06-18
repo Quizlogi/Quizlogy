@@ -46,7 +46,7 @@ export default function DetailQuiz() {
           <BarLoader color="#0f172a" css="margin: 0 auto" />
         </div>
       ) : (
-        <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
+        <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-auto">
           <Link to="/dashboard">
             <Button className="mb-2" size="sm" variant="outlined">
               <span className="flex flex-row gap-2 items-center">
@@ -54,12 +54,12 @@ export default function DetailQuiz() {
               </span>
             </Button>
           </Link>
-          <Card className="p-4 my-2">
-            <div className="grid grid-cols-2 gap-4 mb-4">
+          <Card className="p-4 my-2 md:w-dvh md:overflow-auto md:flex-row justify-center">
+            <div className='grid md:grid-cols-2 gap-6 mb-4'>
               <CardHeader
                 floated={false}
                 color="blue-gray"
-                className="relative w-96 mx-auto mt-0"
+                className="relative w-dvh mx-auto mt-0"
               >
                 <img
                   src={
@@ -68,7 +68,7 @@ export default function DetailQuiz() {
                       : `${import.meta.env.VITE_CDN_URL}/${detailQuiz.image}`
                   }
                   alt="card-image"
-                  className="object-cover"
+                  className="object-cover md:h-52 w-full"
                 />
                 <Button
                   color="green"
