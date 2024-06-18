@@ -2,23 +2,24 @@ import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { NavbarMain } from '../navbar/NavbarMain';
 import { LogoFooter } from "../landing/LogoFooter";
 import { useNavigate } from "react-router-dom";
-import useAuthCheck from "../../hooks/useAuthCheck";
 import { useEffect } from "react";
+
+import { useStore } from "../../states/auth";
+
 export function MainLayout() {
   const navigate = useNavigate();
-  const [user, loading] = useAuthCheck();
+
+  const { user } = useStore((state) => ({
+    user: state.user,
+  }));
 
   useEffect(() => {
-    if (loading) return;
-
-    if (user?.role.id === 3) {
+    if (user?.role?.id === 3) {
       navigate("/admin");
-    } else if (user?.role.id === 2) {
+    } else if (user?.role?.id === 2) {
       navigate("/penguji");
-    } else if (!user) {
-      navigate("/login");
     }
-  }, [user, navigate, loading]);
+  }, [user, navigate]);
   return (
     <div
       className="h-full"

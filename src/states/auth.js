@@ -66,5 +66,6 @@ export const useStore = create((set) => ({
     removeToken();
     toast.success("Logout success!");
   },
+  setLoading: (loading) => set({ loading }),
   reset: () => set({ user: null }),
 }));

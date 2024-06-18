@@ -1,18 +1,19 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import useAuthCheck from "../../hooks/useAuthCheck";
 
 import { useEffect } from "react";
+
+import { useStore } from "../../states/auth";
 
 export function AuthLayout() {
   const navigate = useNavigate();
 
-  const [user, loading] = useAuthCheck();
+  const { user } = useStore((state) => ({
+    user: state.user,
+  }));
 
   useEffect(() => {
-    if (loading) return;
-
-    switch (user?.role.id) {
+    switch (user?.role?.id) {
       case 3:
         navigate("/admin");
         break;
@@ -25,7 +26,7 @@ export function AuthLayout() {
       default:
         break;
     }
-  }, [user, navigate, loading]);
+  }, [user, navigate]);
 
   return (
     <>
