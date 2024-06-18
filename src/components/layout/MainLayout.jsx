@@ -11,9 +11,9 @@ export function MainLayout() {
   useEffect(() => {
     if (loading) return;
 
-    if (user?.role === 3) {
+    if (user?.role.id === 3) {
       navigate("/admin");
-    } else if (user?.role === 2) {
+    } else if (user?.role.id === 2) {
       navigate("/penguji");
     } else if (!user) {
       navigate("/login");

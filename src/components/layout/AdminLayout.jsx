@@ -10,9 +10,9 @@ export function AdminLayout() {
   const [user] = useAuthCheck();
 
   useEffect(() => {
-    if (user?.role === 2) {
+    if (user?.role.id === 2) {
       navigate("/penguji");
-    } else if (user?.role === 1) {
+    } else if (user?.role.id === 1) {
       navigate("/dashboard");
     } else if (!user) {
       navigate("/login");

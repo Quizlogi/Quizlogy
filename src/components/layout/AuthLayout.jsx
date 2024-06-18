@@ -12,7 +12,7 @@ export function AuthLayout() {
   useEffect(() => {
     if (loading) return;
 
-    switch (user?.role) {
+    switch (user?.role.id) {
       case 3:
         navigate("/admin");
         break;

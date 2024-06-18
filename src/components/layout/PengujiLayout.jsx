@@ -12,9 +12,9 @@ export function PengujiLayout() {
   useEffect(() => {
     if (loading) return;
 
-    if (user?.role === 3) {
+    if (user?.role.id === 3) {
       navigate("/admin");
-    } else if (user?.role === 1) {
+    } else if (user?.role.id === 1) {
       navigate("/dashboard");
     } else if (!user) {
       navigate("/login");
