@@ -54,8 +54,8 @@ export default function DetailQuiz() {
               </span>
             </Button>
           </Link>
-          <Card className="p-4 my-2">
-            <div className="grid grid-cols-2 gap-4 mb-4 md:w-dvh md:overflow-auto md:flex-row justify-center">
+          <Card className="p-4 my-2 md:w-dvh md:overflow-auto md:flex-row justify-center">
+            <div className='grid md:grid-cols-2 gap-6 mb-4'>
               <CardHeader
                 floated={false}
                 color="blue-gray"
