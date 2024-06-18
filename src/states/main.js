@@ -25,6 +25,8 @@ export const useStore = create((set) => ({
       set({ loading: true });
 
       const detailQuiz = await QuizAPI.getQuiz(id);
+      if (Array.isArray(detailQuiz)) location.href = "/404";
+
       set({ detailQuiz });
 
       set({ loading: false });
