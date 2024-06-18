@@ -6,7 +6,7 @@ export function RegisterInput({
   name,
   setName,
   username,
-  setUsername,
+  setUsername, 
   email,
   setEmail,
   password,
