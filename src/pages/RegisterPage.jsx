@@ -14,7 +14,7 @@ const RegisterPage = () => {
   const { register } = useStore((state) => ({
     user: state.user,
     register: state.register,
-  })); 
+  }));  
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +22,9 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className='w-full h-screen flex flex-col md:flex-row items-start'>
+    <div className='w-full h-screen flex flex-col md:flex-row items-center md:items-start'>
       <div className='relative w-full md:w-1/2 md:h-full flex flex-col'>
-        <div className='absolute top-[20%] left-[10%] flex flex-col md:block hidden md:flex'>
+        <div className='absolute top-[20%] left-[10%] flex flex-col md:block hidden md:block'>
           <h1 className='text-4xl text-white font-bold my-4'>
             Create engaging quizzes effortlessly
           </h1>
@@ -39,12 +39,12 @@ const RegisterPage = () => {
           alt='cover'
         />
       </div>
-      <div className='w-full md:w-1/2 h-full bg-[#F5F5F5] flex flex-col p-8 md:p-10 justify-between items-center sm:p-4 sm:items-start'>
-        <Link to="/">
+      <div className='w-full md:w-1/2 h-full max-h-dvh bg-[#F5F5F5] flex flex-col p-8 md:p-10 justify-center items-center sm:p-4 sm:items-start'>
+        <Link to="/" className="w-full flex justify-center mb-8 md:mb-16">
           <img
             src={quizlogyIcon}
             alt="Quizlogy Icon"
-            className='w-full max-w-[130px] mx-auto text-xl mr-auto mb-8' 
+            className='max-w-[130px]' 
           />
         </Link>
         <RegisterInput

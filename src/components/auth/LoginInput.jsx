@@ -8,10 +8,10 @@ export function LoginInput({
   onSubmit,
 }) {
   return (
-    <div className='w-full flex flex-col max-w-[500px] mb-12 md:mb-24 p-4 md:p-0 sm:max-w-full sm:p-2'>
+    <div className='w-full flex flex-col max-w-[500px] mb-12 md:mb-24 p-4 md:p-0 sm:max-w-full sm:p-2 flex-reverse-col'>
       <div className='w-full flex flex-col mb-6 md:mb-10 sm:mb-4'>
         <div className='flex flex-col-3 items-center justify-center'>
-          <h3 className='text-3xl font-semibold mb-2'>Login</h3>
+          <h3 className='text-3xl font-semibold mb-2 mt-24'>Login</h3>
         </div>
         <div className='flex flex-col-3 items-center justify-center'>
           <p className='text-base mb-2'>
