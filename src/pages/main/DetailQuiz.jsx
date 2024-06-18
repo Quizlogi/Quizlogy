@@ -54,7 +54,7 @@ export default function DetailQuiz() {
               </span>
             </Button>
           </Link>
-          <Card className="p-4 my-2">
+          <Card className="p-4 my-2 gradientBg">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <CardHeader
                 floated={false}
@@ -87,15 +87,15 @@ export default function DetailQuiz() {
                   variant="outlined"
                   value={detailQuiz.category?.name || "Uncategorized"}
                   color="blue-gray"
-                  className="w-fit"
+                  className="w-fit border-white text-white"
                 />
-                <h5 className="text-xl font-bold line-clamp-2">
+                <h5 className="text-xl text-white font-bold line-clamp-2 ">
                   {detailQuiz.title}
                 </h5>
-                <Typography>
+                <Typography className="text-white">
                   {detailQuiz._count?.questions} Soal
                 </Typography>
-                <p className="line-clamp-6">{detailQuiz.description}</p>
+                <p className="line-clamp-6 text-white ">{detailQuiz.description}</p>
               </div>
             </div>
           </Card>

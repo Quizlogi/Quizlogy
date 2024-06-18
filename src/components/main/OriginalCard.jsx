@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 
 export function OriginalCard({ user }) {
   return (
-    <Card className="mt-6">
+    <Card className="mt-6 gradientBg">
       <CardBody className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 mb-6">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="h-12 w-12 text-gray-900"
+          className="h-12 w-12 text-white"
         >
           <path
             fillRule="evenodd"
@@ -21,20 +21,20 @@ export function OriginalCard({ user }) {
           <path d="M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z" />
         </svg>
         <div className="text-center sm:text-left">
-          <Typography variant="h5" color="blue-gray">
+          <Typography variant="h5" color="white">
             Selamat datang, {user.name}!
           </Typography>
         </div>
       </CardBody>
       <CardFooter className="flex flex-row pt-0 mb-8">
         <Link to={"/history"} className="inline-block">
-          <Button size="sm" variant="text" className="flex items-center gap-2">
+          <Button size="sm" variant="text" className="flex items-center gap-2 text-white">
             <FaHistory />
             Riwayat quiz
           </Button>
         </Link>
         <Link to="/dashboard/profile" className="inline-block">
-          <Button size="sm" variant="text" className="flex items-center gap-2">
+          <Button size="sm" variant="text" className="flex items-center gap-2 text-white">
             Menuju ke profil
             <svg
               xmlns="http://www.w3.org/2000/svg"
