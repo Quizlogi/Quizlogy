@@ -1,4 +1,10 @@
-import { Button, Card, CardHeader, Chip, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Card,
+  CardHeader,
+  Chip,
+  Typography,
+} from "@material-tailwind/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useStore as useStoreQuiz } from "../../states/main";
 import { useStore as useStoreAuth } from "../../states/auth";
@@ -50,61 +56,58 @@ export default function DetailQuiz() {
           <BarLoader color="#0f172a" css="margin: 0 auto" />
         </div>
       ) : (
-        <>
-          <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
-            <Toaster />
-            <Link to="/dashboard">
-              <Button className="mb-2" size="sm" variant="outlined">
-                <span className="flex flex-row gap-2 items-center">
-                  <IoArrowBack /> Back
-                </span>
-              </Button>
-            </Link>
-            <Card className="p-4 my-2">
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <CardHeader
-                  floated={false}
-                  color="blue-gray"
-                  className="relative w-96 mx-auto mt-0"
+        <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-hidden">
+          <Link to="/dashboard">
+            <Button className="mb-2" size="sm" variant="outlined">
+              <span className="flex flex-row gap-2 items-center">
+                <IoArrowBack /> Back
+              </span>
+            </Button>
+          </Link>
+          <Card className="p-4 my-2">
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <CardHeader
+                floated={false}
+                color="blue-gray"
+                className="relative w-96 mx-auto mt-0"
+              >
+                <img
+                  src={
+                    detailQuiz?.image?.includes("http")
+                      ? detailQuiz.image
+                      : `${import.meta.env.VITE_CDN_URL}/${detailQuiz.image}`
+                  }
+                  alt="card-image"
+                  className="object-cover"
+                />
+                <Button
+                  color="green"
+                  className="w-full rounded-s-none rounded-r-none"
+                  onClick={onClickStartQuiz}
                 >
-                  <img
-                    src={
-                      detailQuiz?.image?.includes("http")
-                        ? detailQuiz.image
-                        : `${import.meta.env.VITE_CDN_URL}/${detailQuiz.image}`
-                    }
-                    alt="card-image"
-                    className="object-cover"
-                  />
-                  <Button
-                    color="green"
-                    className="w-full rounded-s-none rounded-r-none"
-                    onClick={onClickStartQuiz}
-                  >
-                    <span className="flex flex-row gap-2 items-center">
-                      <FaPlay />
-                      Mulai Quiz
-                    </span>
-                  </Button>
-                </CardHeader>
-                <div className="flex flex-col gap-2">
-                  <Chip
-                    size="sm"
-                    variant="outlined"
-                    value={detailQuiz.category?.name || "Uncategorized"}
-                    color="blue-gray"
-                    className="w-fit"
-                  />
-                  <h5 className="text-xl font-bold line-clamp-2">
-                    {detailQuiz.title}
-                  </h5>
-                  <Typography>{detailQuiz._count?.questions} Soal</Typography>
-                  <p className="line-clamp-6">{detailQuiz.description}</p>
-                </div>
+                  <span className="flex flex-row gap-2 items-center">
+                    <FaPlay />
+                    Mulai Quiz
+                  </span>
+                </Button>
+              </CardHeader>
+              <div className="flex flex-col gap-2">
+                <Chip
+                  size="sm"
+                  variant="outlined"
+                  value={detailQuiz.category?.name || "Uncategorized"}
+                  color="blue-gray"
+                  className="w-fit"
+                />
+                <h5 className="text-xl font-bold line-clamp-2">
+                  {detailQuiz.title}
+                </h5>
+                <Typography>{detailQuiz._count?.questions} Soal</Typography>
+                <p className="line-clamp-6">{detailQuiz.description}</p>
               </div>
-            </Card>
-          </div>
-        </>
+            </div>
+          </Card>
+        </div>
       )}
     </div>
   );
