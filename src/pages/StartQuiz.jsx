@@ -3,7 +3,6 @@ import { useStore as useSessionStore } from "../states/quizSession"
 import { getQuizAnswer, initQuizAnswer, setQuizAnswer } from "../utils/userAnswer";
 import { Card, Button, ButtonGroup, Chip, Typography, IconButton } from "@material-tailwind/react";
 import { GrCaretPrevious, GrCaretNext } from "react-icons/gr";
-import { Toaster } from "react-hot-toast";
 import { Link, useParams } from "react-router-dom";
 import { shallow } from "zustand/shallow";
 import { BarLoader } from "react-spinners";
@@ -70,7 +69,6 @@ export default function StartQuiz() {
 
   return (
     <Card className='lg:w-[576px] h-max mx-auto my-4 sm:w-dvh'>
-      <Toaster />
         <article className="flex flex-col justify-between h-fit m-6 gap-4">
           <div className="upper-section">
             {/* unchanged section */}

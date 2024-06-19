@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 import { useStore } from "../../states/auth";
+import { Toaster } from 'react-hot-toast';
 
 export function MainLayout() {
   const navigate = useNavigate();
@@ -25,6 +26,15 @@ export function MainLayout() {
       className="h-full"
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
+      <Toaster
+        icon="ⓘ"
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,
+        }}
+      />
       <NavbarMain />
 
       <main style={{ flex: 1 }}>
