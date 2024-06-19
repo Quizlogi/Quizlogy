@@ -34,7 +34,9 @@ export default function DetailQuiz() {
     if (response.error) {
       const session = await sessionAPI.getQuizSession(id);
 
-      toast.success("Session sudah ada, lanjutkan session sebelumnya");
+      toast("Selesaikan kuis sebelumnya ya", {
+        icon: "✌️",
+      });
 
       navigate(`/quiz/session/${session.data[0].id}`);
     }
