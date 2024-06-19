@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 export const useStore = create((set) => ({
   quizSession: {},
-  loading: false,
+  loading: true,
   getQuizSession: async (id) => {
     try {
       set({ loading: true });
