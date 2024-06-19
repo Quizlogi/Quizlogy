@@ -51,11 +51,6 @@ export default function DetailQuiz() {
 
   return (
     <div>
-      {loading ? (
-        <div className="flex justify-center mb-5">
-          <BarLoader color="#0f172a" css="margin: 0 auto" />
-        </div>
-      ) : (
         <div className="mx-auto my-12 max-w-screen-xl px-4 md:px-6 lg:px-8 overflow-auto">
           <Link to="/dashboard">
             <Button className="mb-2" size="sm" variant="outlined">
@@ -65,6 +60,11 @@ export default function DetailQuiz() {
             </Button>
           </Link>
           <Card className="p-4 my-2 ">
+          { loading ? (
+              <div className="flex justify-center mb-5 mx-auto h-dvh">
+                <BarLoader color="#0f172a" css="margin: 0 auto" />
+              </div>
+            ) : (
             <div className="grid md:grid-cols-2 gap-6 mb-4">
               <CardHeader
                 floated={false}
@@ -106,9 +106,9 @@ export default function DetailQuiz() {
                 <p className="line-clamp-6">{detailQuiz.description}</p>
               </div>
             </div>
+          )}
           </Card>
         </div>
-      )}
     </div>
   );
 }
