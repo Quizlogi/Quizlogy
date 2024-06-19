@@ -61,7 +61,7 @@ export default function DetailQuiz() {
           </Link>
           <Card className="p-4 my-2 ">
           { loading ? (
-              <div className="flex justify-center mb-5 mx-auto h-dvh">
+              <div className="flex justify-center mb-5 mx-auto">
                 <BarLoader color="#0f172a" css="margin: 0 auto" />
               </div>
             ) : (
